@@ -25,16 +25,16 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Persist Eleventy .cache
-        uses: actions/cache@v3
-        with:
-          path: ./.cache
-          key: ${{ runner.os }}-eleventy-fetch-cache
+      # Remove this unless you use a plugin that needs ./.cache
+      # - name: Persist Eleventy .cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ./.cache
+      #     key: ${{ runner.os }}-eleventy-fetch-cache
 
-      - run: npm install
-      - run: npm install @11ty/eleventy
+      - run: npm ci
       - run: npm run build-ghpages
 
       - name: Deploy
