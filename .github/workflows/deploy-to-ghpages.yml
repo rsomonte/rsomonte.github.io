@@ -34,6 +34,7 @@ jobs:
           key: ${{ runner.os }}-eleventy-fetch-cache
 
       - run: npm install
+      - run: npm install @11ty/eleventy
       - run: npm run build-ghpages
 
       - name: Deploy
