@@ -29,7 +29,6 @@ module.exports = function (eleventyConfig) {
     });   
 
     return {
-        pathPrefix: "/rsomonte.github.io/",
         dir: {
             input: "content", // Root directory
             includes: "../_includes", // Includes directory
