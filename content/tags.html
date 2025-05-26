@@ -1,0 +1,18 @@
+---
+layout: layout.html
+title: "Tags"
+permalink: /tags/
+---
+
+<h1>All Tags</h1>
+
+<!-- This is a list of all tags used in the blog -->
+<ul>
+  {% for tag in collections.tagList %}
+    {% if tag != "all" and tag != "post" %}
+      <li>
+        <a href="/tags/{{ tag }}/">{{ tag | capitalize }}</a> ({{ collections[tag] | size }})
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

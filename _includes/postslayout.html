@@ -1,0 +1,38 @@
+---
+layout: layout.html
+---
+<head><link href="https://fonts.googleapis.com/css2?family=Libre+Clarendon:wght@700&display=swap" rel="stylesheet"></head> <!-- Don't quite remember why this is here xd -->
+<h1><u>{{ title | default: "My test blog" }}</u></h1>
+
+<!-- This shows the date and tags -->
+<p class="post-date" style="margin-bottom: 0.2em; margin-top: -1em;">Published on: {{ page.date | date: "%B %d, %Y" }}</p>
+<p class="post-tags" style="margin-top: 0.2em;">
+    Tags: 
+    {% for tag in tags | filterTagList %}
+    {% if tag != "post" %}
+        {% assign tagUrl = "/tags/" | append: tag | append: "/" %}
+        <a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>
+    {% endif %}
+    {% endfor %}
+</p>
+
+{{ content }}
+
+<!-- This shows the previous and next posts at the end of the post -->
+<nav class="links-nextprev">
+    {% assign previousPost = collections.posts | getPreviousCollectionItem %}
+    {% assign nextPost = collections.posts | getNextCollectionItem %}
+
+    <div class="links-nextprev-previous">
+        {% if previousPost %}
+            <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Previous post</p>
+            <a href="{{ previousPost.url }}">&larr; {{ previousPost.data.title }}</a>
+        {% endif %}
+    </div>
+    <div class="links-nextprev-next">
+        {% if nextPost %}
+            <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Next post</p>
+            <a href="{{ nextPost.url }}">{{ nextPost.data.title }} &rarr;</a>
+        {% endif %}
+    </div>
+</nav>
