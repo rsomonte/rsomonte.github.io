@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I hate deployment, don't even mention it</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-link">rsomonte&#39;s website</a>
+        <nav>
+            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+            <ul class="nav">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="/posts/">Blog</a></li>
+                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="message-box">
+            <h3>⚠️This web is under construction, please be patient</h3>
+            <ol>
+                <p>It is a work in progress, so expect many things to change.</p>
+                <p>My knowledge in webdev is very limited so expect this website to have many flaws in its initial versions.</p>
+            </ol>
+        </div>
+        <!-- Page-specific content goes here -->
+        <head><link href="https://fonts.googleapis.com/css2?family=Libre+Clarendon:wght@700&display=swap" rel="stylesheet"></head> <!-- Don't quite remember why this is here xd -->
+<h1><u>I hate deployment, don't even mention it</u></h1>
+
+<!-- This shows the date and tags -->
+<p class="post-date" style="margin-bottom: 0.2em; margin-top: -1em;">Published on: May 26, 2025</p>
+<p class="post-tags" style="margin-top: 0.2em;">
+    Tags: 
+    
+    
+    
+    
+        
+        <a href="/tags/web dev/" class="post-tag">web dev</a>
+    
+    
+</p>
+
+<h2>Seems like I’m not getting anything right on the first try. In this edition of <em>Dev Odysseys</em>, I’ll share the rollercoaster of deploying my website—complete with rage-quits, AI rescues, and GitHub Pages chaos.</h2>
+<h3><strong>“It’ll Be Easy,” They Said</strong></h3>
+<p>In my <a href="https://rsomonte.github.io/posts/post1/">last post</a>, I bragged about how 11ty would simplify deployment. <strong>Foreshadowing alert</strong>: this is where the universe decided to humble me (thank god y’all can’t see my graveyard of deleted repos).</p>
+<p>I did what any sane person would: Googled <em>“11ty GitHub Pages”</em>. Dozens of tutorials popped up. “ez win!” I thought. <strong>Spoiler</strong>: It was not.</p>
+<hr>
+<h3><strong>The Great GitHub Pages Meltdown</strong></h3>
+<p>First attempt: followed a tutorial. Styles broke. Links back to home. Tried manual fixes. Nothing. Switched to another guide. Same result. By this point, I’d had a <em>very</em> intense weekend and just wanted to finish this project. So I had only one last ace up the sleeve: <strong>rage-quit</strong>.</p>
+<hr>
+<h3><strong>Redemption Arc (Thanks, 11ty Docs)</strong></h3>
+<p>Next day, fresh coffee in hand(not quite, coffee is <em>disgusting</em>), I crawled back to <a href="https://www.11ty.dev/">11ty’s website</a>. Their <strong>site-wide search</strong> is like Bruno, we don't talk about it; but after some digging, I struck gold: the <a href="https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-github-pages">official deployment guide</a>.</p>
+<p><strong>It's alive!</strong> Their method worked… <em>mostly</em>. Styles still looked like a first grader's father's day website. However, I sometimes have genius ideas: I remembered that we live in the 21st century, and we have the commodity of AI to help us in some ocassions. A few prompts later, the last gremlins were squashed.</p>
+<hr>
+<h3><strong>Dear Future Me (and You)</strong></h3>
+<p>If you’re reading this while battling outdated 2022 tutorials (or worse, <strong>2020</strong> relics), know this: you’re not alone. Next time I’m drowning in deployment hell, I’ll drag y’all down with me—<em>gloriously</em>.</p>
+<p><strong>Thanks for reading!</strong> If you’ve survived a deployment disaster, tell me about it—misery loves company.</p>
+
+
+<!-- This shows the previous and next posts at the end of the post -->
+<nav class="links-nextprev">
+    
+    
+
+    <div class="links-nextprev-previous">
+        
+    </div>
+    <div class="links-nextprev-next">
+        
+            <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Next post</p>
+            <a href="/posts/post1/">Building My First Website: Homer's Odyssey &rarr;</a>
+        
+    </div>
+</nav>
+
+    </main>
+    <footer>
+        <hr>
+        <!-- This displays the copyright with the year of the user's device -->
+        <p>© <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+        <p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
+    </footer>
+</body>
+</html>

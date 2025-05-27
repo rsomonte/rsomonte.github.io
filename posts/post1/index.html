@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building My First Website: Homer's Odyssey</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-link">rsomonte&#39;s website</a>
+        <nav>
+            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+            <ul class="nav">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="/posts/">Blog</a></li>
+                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="message-box">
+            <h3>⚠️This web is under construction, please be patient</h3>
+            <ol>
+                <p>It is a work in progress, so expect many things to change.</p>
+                <p>My knowledge in webdev is very limited so expect this website to have many flaws in its initial versions.</p>
+            </ol>
+        </div>
+        <!-- Page-specific content goes here -->
+        <head><link href="https://fonts.googleapis.com/css2?family=Libre+Clarendon:wght@700&display=swap" rel="stylesheet"></head> <!-- Don't quite remember why this is here xd -->
+<h1><u>Building My First Website: Homer's Odyssey</u></h1>
+
+<!-- This shows the date and tags -->
+<p class="post-date" style="margin-bottom: 0.2em; margin-top: -1em;">Published on: May 25, 2025</p>
+<p class="post-tags" style="margin-top: 0.2em;">
+    Tags: 
+    
+    
+    
+    
+        
+        <a href="/tags/web dev/" class="post-tag">web dev</a>
+    
+    
+</p>
+
+<p>It hasn’t been an easy ride to build this website—especially with my lack of web development experience. But I can confidently say I’ve learned a ton about the tools and technologies powering this site, and I’m here to share the messy journey.</p>
+<hr>
+<h3>Why GitHub Pages and 11ty?</h3>
+<p>My goal was to host this site on GitHub Pages, which meant sticking to <strong>static site generators</strong>. After seeing another developer struggle with self-hosting due to their non-static tech stack, I knew I needed a simpler path. Enter <a href="https://www.11ty.dev/">11ty</a>.</p>
+<p>At first, I thought 11ty’s templates would make this a walk in the park. Spoiler: it wasn’t. When I opened the default template in VS Code, I froze—<strong>so many files</strong>, so much code, and zero idea where to start. I tinkered with minor tweaks, but the rigid structure stifled my design creativity.</p>
+<p>So, I did the only logical thing: <strong>scrapped the template entirely</strong> and started from scratch.</p>
+<hr>
+<h3>Baby Steps and Breakthroughs</h3>
+<p>Armed with basic HTML/CSS knowledge from a web dev course I’d taken the previous semester, I dove into 11ty’s documentation. Progress was slow, but every tiny victory kept me going—whether it was fixing a rage-inducing bug after two hours of Googling or finally understanding how layouts worked.</p>
+<p>Eventually, I circled back to the template I’d abandoned earlier—this time, not to copy it, but to <strong>borrow inspiration</strong> for my own design. I embraced 11ty’s <a href="https://www.11ty.dev/docs/layouts/">layout system</a> to structure pages consistently, and things started falling into place.</p>
+<hr>
+<h3>The To-Do List Grind</h3>
+<p>Once the skeleton of the site was built, I drafted a checklist of everything needed for launch: optimizing code, adding comments I’d lazily skipped, and experimenting with <a href="https://www.11ty.dev/docs/languages/nunjucks/">Nunjucks</a> templating (a short-lived attempt—<strong>it’s still on my bucket list</strong>).</p>
+<hr>
+<h3>The Final Stretch</h3>
+<p>Two hours. That’s how long I spent agonizing over the perfect color scheme (you better appreciate that palette). After endless tweaks, the site was finally “presentable”—or at least, not embarrassing.</p>
+<hr>
+<p><strong>Thanks for reading!</strong> If you spot any typos… no you didn’t.<br>
+<em>Stay tuned for more posts as I stumble through new projects.</em></p>
+
+
+<!-- This shows the previous and next posts at the end of the post -->
+<nav class="links-nextprev">
+    
+    
+
+    <div class="links-nextprev-previous">
+        
+            <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Previous post</p>
+            <a href="/posts/post2/">&larr; I hate deployment, don't even mention it</a>
+        
+    </div>
+    <div class="links-nextprev-next">
+        
+    </div>
+</nav>
+
+    </main>
+    <footer>
+        <hr>
+        <!-- This displays the copyright with the year of the user's device -->
+        <p>© <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+        <p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
+    </footer>
+</body>
+</html>
