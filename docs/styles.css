@@ -27,20 +27,6 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
-		--color-gray-90: #dad8d8;
-
-		--background-color: #6b4626;
-
-		--footer-background-color: #52391c;
-
-		--header-background-color: #6a420a;
-
-		--text-color-link: var(--color-gray-20);
-		--text-color-link-active: #d199b8;
-		--text-color-link-visited: var(--color-gray-50);
-
 		--colortext-message-box: var(--color-gray-20);
 	}
 }
