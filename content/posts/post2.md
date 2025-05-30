@@ -21,7 +21,7 @@ First attempt: followed a tutorial. Styles broke. Links back to home. Tried manu
 ---
 
 ### **Redemption Arc (Thanks, 11ty Docs)**  
-Next day, fresh coffee in hand(not quite, coffee is *disgusting*), I crawled back to [11ty’s website](https://www.11ty.dev/). Their **site-wide search** is like Bruno, we don't talk about it; but after some digging, I struck gold: the [official deployment guide](https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-github-pages).  
+Next day, fresh coffee in hand (not quite, coffee is *disgusting*), I crawled back to [11ty’s website](https://www.11ty.dev/). Their **site-wide search** is like Bruno, we don't talk about it; but after some digging, I struck gold: the [official deployment guide](https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-github-pages).  
 
 **It's alive!** Their method worked… *mostly*. Styles still looked like a first grader's father's day website. However, I sometimes have genius ideas: I remembered that we live in the 21st century, and we have the commodity of AI to help us in some ocassions. A few prompts later, the last gremlins were squashed.  
 

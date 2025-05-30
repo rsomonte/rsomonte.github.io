@@ -17,7 +17,7 @@ a focus on hands-on security implementation.
 
 ## <u>Skills</u>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+<div class="cvcolumn" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
   <!-- Column 1 -->
   <div class="cvbox" style="padding: 15px; border-radius: 10px;">
     <h4> ~ Technical Skills </h4>
