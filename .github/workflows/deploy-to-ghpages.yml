@@ -43,6 +43,9 @@ jobs:
       - name: List docs/pkg contents
         run: ls -l docs/pkg
 
+      - name: Remove .gitignore from docs/pkg
+        run: rm docs/pkg/.gitignore
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
