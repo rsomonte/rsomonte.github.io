@@ -1,0 +1,59 @@
+---
+layout: layout.html
+title: File Type Identifier
+---
+
+<h1>File Type Identifier</h1>
+<p>Select a file from your computer to identify its type using Rust and WebAssembly. The entire process runs locally in your browser.</p>
+
+<input type="file" id="upload" class="message-box" />
+<hr>
+<h3>Results:</h3>
+<pre id="results"; class="message-box">Awaiting file...</pre>
+
+<script type="module">
+  // Import the wasm-pack generated JS and your Wasm function
+  import init, { identify_file_wasm } from '/pkg/filetype_wasm.js';
+
+  async function main() {
+    // Initialize the Wasm module.
+    await init();
+
+    const fileInput = document.getElementById('upload');
+    const resultsOutput = document.getElementById('results');
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) {
+        resultsOutput.textContent = 'Awaiting file...';
+        return;
+      }
+
+      const reader = new FileReader();
+
+      // This function runs AFTER the file is read successfully
+      reader.onload = (e) => {
+        // Get the file's bytes as a Uint8Array
+        const bytes = new Uint8Array(e.target.result);
+        
+        // Call your Rust function!
+        const fileInfo = identify_file_wasm(bytes);
+        
+        // Display the result
+        resultsOutput.textContent = fileInfo;
+      };
+      
+      // This function runs if there's an error reading the file
+      reader.onerror = () => {
+          resultsOutput.textContent = `Error: Could not read the file "${file.name}".`;
+      };
+
+      resultsOutput.textContent = `Analyzing "${file.name}"...`;
+      
+      // Start reading the file
+      reader.readAsArrayBuffer(file);
+    });
+  }
+
+  main().catch(console.error); // Keep this to log any potential initialization errors in the future.
+</script>

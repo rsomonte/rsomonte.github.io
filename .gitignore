@@ -1,0 +1,9 @@
+/docs
+/filetype_wasm/target/
+/filetype_wasm/pkg/
+/filetype_wasm/.wasm-pack
+/node_modules/
+*.log
+.DS_Store
+Thumbs.db
+.vscode/

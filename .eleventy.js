@@ -22,6 +22,8 @@ module.exports = function (eleventyConfig) {
     // This basically lets me use styles.css in my HTML files
     eleventyConfig.addPassthroughCopy("styles.css");
 
+    eleventyConfig.addPassthroughCopy({ "./filetype_wasm/pkg": "pkg" });
+    
     // Enable excerpts
     eleventyConfig.setFrontMatterParsingOptions({
         excerpt: true,
