@@ -27,12 +27,15 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-      # Remove this unless you use a plugin that needs ./.cache
-      # - name: Persist Eleventy .cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ./.cache
-      #     key: ${{ runner.os }}-eleventy-fetch-cache
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+          override: true
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack
 
       - run: npm ci
       - run: npm run build-ghpages
