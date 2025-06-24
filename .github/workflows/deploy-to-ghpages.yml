@@ -40,6 +40,9 @@ jobs:
       - run: npm ci
       - run: npm run build-ghpages
 
+      - name: List docs/pkg contents
+        run: ls -l docs/pkg
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
