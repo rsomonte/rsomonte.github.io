@@ -21,6 +21,8 @@ module.exports = function (eleventyConfig) {
 
     // This basically lets me use styles.css in my HTML files
     eleventyConfig.addPassthroughCopy("styles.css");
+    // This copies the favicon to the output folder
+    eleventyConfig.addPassthroughCopy("favicon.ico");
     
     // Enable excerpts
     eleventyConfig.setFrontMatterParsingOptions({
