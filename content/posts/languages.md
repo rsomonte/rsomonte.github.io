@@ -4,6 +4,7 @@ date: "2025-06-23"
 tags: ["languages", "resources"]  
 ---
 Over years of studying languages, I've tested a wide array of learning tools. This report shares my personal experiences and ratings for each, from apps to websites, to help you choose the right one for your journey.
+<!-- excerpt -->
 
 ## <u>Top Language Learning Applications</u>
 
