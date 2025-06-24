@@ -1,4 +1,3 @@
-/docs
 /filetype_wasm/target/
 /filetype_wasm/pkg/
 /filetype_wasm/.wasm-pack
