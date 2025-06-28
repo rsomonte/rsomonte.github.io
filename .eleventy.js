@@ -30,6 +30,10 @@ module.exports = function (eleventyConfig) {
         excerpt_separator: "<!-- excerpt -->",
     });   
 
+    eleventyConfig.addCollection("tools", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("content/tools/*");
+    });
+
     return {
         dir: {
             input: "content", // Root directory

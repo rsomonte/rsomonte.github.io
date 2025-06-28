@@ -1,0 +1,16 @@
+---
+layout: commonlayout.liquid
+title: "Tools"
+permalink: "/tools/"
+---
+
+<p>Here you will find a list of tools I've developed using different technologies such as Wasm:</p>
+{% assign tools = collections.tools %}
+{% for tool in tools %}
+  <div class="tool-entry">
+    <a href="{{ tool.url }}"><h2>{{ tool.data.title | default: tool.fileSlug }}</h2></a>
+    {% if tool.data.description %}
+      <p>{{ tool.data.description }}</p>
+    {% endif %}
+  </div>
+{% endfor %}

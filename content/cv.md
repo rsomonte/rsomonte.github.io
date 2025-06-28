@@ -81,7 +81,7 @@ University of Maryland Global Campus (UMGC) – **GPA: 3.93**
 - <u>Relevant Coursework:</u> Intermediate Programming, Relational Database Concepts & Applications,
     Introduction to Linux, Red Hat Linux System Administration I, Ethical Hacking, Penetration Testing & Cyber
     Red Team, Threat Management & Vulnerability Assessment, Advanced Information Systems Security.
-- <u>Dean's List:</u> 5 consecutive semesters (Summer 2023 - Fall 2024)
+- <u>Dean's List:</u> 6 consecutive semesters (Summer 2023 - Spring 2025)
 
 ## <u>Awards and Accomplishments</u>
 
