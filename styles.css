@@ -189,6 +189,14 @@ footer {
 	color: var(--color-gray-90);
 	width: 100%;
 	max-width: none;
+	text-align: center; 
+    padding-bottom: 10px; 
+}
+.footer-content {
+    display: flex; /* Makes this container a flex container */
+    justify-content: space-between; /* Pushes items to the far left and far right */
+    align-items: center; /* Vertically aligns items in the middle */
+    padding: 10px 20px; /* Optional: padding inside this content container */
 }
 
 /* Links Next/Prev */
@@ -304,21 +312,48 @@ footer {
 	}
 }
 
-/* This solves the problem of the cv in small screens */
+.cvbox ul li {
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start; 
+}
+
+.language-name {
+  display: inline-block; 
+  width: 90px; 
+  flex-shrink: 0; 
+}
+
 @media (max-width: 660px) {
-	main{
-		max-width: 100%;
-	}
-	.cvcolumn {
-		max-width: 100vw;
-		overflow-x: auto;
-		overflow-y: visible;
-		white-space: nowrap;
-	}
-	.cvbox {
-		max-width: 75vw;
-		white-space: normal;
-	}
+    main{
+        max-width: 100%;
+    }
+    .cvcolumn {
+        max-width: 100vw;
+        overflow-x: auto;
+        overflow-y: visible;
+        white-space: nowrap;
+    }
+    .cvbox {
+        max-width: 75vw;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 537px) {
+  .cvbox ul li {
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; /* Align children to the start (left) */
+  }
+
+  .language-name {
+    width: auto !important; 
+    margin-bottom: 5px; 
+  }
+
+  .language-circles {
+    display: block; 
+  }
 }
 
 /* Visually Hidden */
@@ -335,4 +370,40 @@ footer {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Libre Clarendon', Georgia, serif;
   font-weight: 700;
+}
+.word-boxes-container {
+  display: flex; 
+  gap: 10px;     
+  align-items: center;   
+  flex-wrap: wrap; 
+  margin-bottom: 2em;
+}
+
+.word-box {
+  padding: 2px 5px;
+  background-color: #333D29;
+  border-radius: 5px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.copyright {
+    margin: 0; 
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px; 
+    align-items: center; /* Ensures icons are vertically aligned if they have different heights */
+}
+
+.social-icons img {
+    height: 2.5em; 
+    vertical-align: middle; 
+}
+
+.built-with {
+    margin-top: 10px; 
+    margin-bottom: 0; 
 }
