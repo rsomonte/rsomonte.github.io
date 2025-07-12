@@ -84,9 +84,18 @@
     </main>
     <footer>
         <hr>
-        <!-- This displays the copyright with the year of the user's device -->
-        <p>© <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
-        <p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
+        <div class="footer-content">
+            <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+            <div class="social-icons">
+                <a href="https://www.github.com/rsomonte">
+                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub icon" style="height:3em; vertical-align: middle;">
+                </a>
+                <a href="https://www.linkedin.com/in/rodrigo-de-diego-de-somonte/">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn icon" style="height: 2em; vertical-align: middle;">
+                </a>
+            </div>
+        </div>
+        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
     </footer>
 </body>
 </html>
