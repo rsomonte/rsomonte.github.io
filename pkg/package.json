@@ -1,14 +1,14 @@
 {
-  "name": "filetype-wasm",
+  "name": "hasher_wasm",
   "type": "module",
   "version": "0.1.0",
   "files": [
-    "filetype_wasm_bg.wasm",
-    "filetype_wasm.js",
-    "filetype_wasm.d.ts"
+    "hasher_wasm_bg.wasm",
+    "hasher_wasm.js",
+    "hasher_wasm.d.ts"
   ],
-  "main": "filetype_wasm.js",
-  "types": "filetype_wasm.d.ts",
+  "main": "hasher_wasm.js",
+  "types": "hasher_wasm.d.ts",
   "sideEffects": [
     "./snippets/*"
   ]
