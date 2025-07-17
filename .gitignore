@@ -1,6 +1,9 @@
 /filetype_wasm/target/
 /filetype_wasm/pkg/
 /filetype_wasm/.wasm-pack
+/hasher_wasm/target/
+/hasher_wasm/pkg/
+/hasher_wasm/.wasm-pack
 /node_modules/
 *.log
 .DS_Store

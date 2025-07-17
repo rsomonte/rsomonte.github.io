@@ -5,6 +5,7 @@ tags: "discord"
 ---
 
 Developing my latest project, a Discord bot called [Taskerbot](https://github.com/rsomonte/taskerbot), has been an interesting journey full of unexpected turns. The inspiration came from a bot I saw during an event on a Discord server that gamified tasks, and I decided to build my own version. This project quickly evolved into a valuable lesson in modern bot development, especially after a five-year hiatus from the Discord API.
+<!-- excerpt -->
 
 ---
 

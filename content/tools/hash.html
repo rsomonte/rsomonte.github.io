@@ -1,0 +1,139 @@
+---
+layout: layout.html
+title: Hasher
+description: Generate file hashes in the browser using Rust and WebAssembly.
+---
+<h1>Hasher</h1>
+<p>Select a file no bigger than 1.5GB from your computer to calculate its hash using Rust and WebAssembly. The entire process runs locally in your browser.</p>
+<p>Don't forget to choose which hashing algorithms you want to use.</p>
+<!-- File input -->
+<input type="file" id="fileInput">
+
+<!-- Algorithm checkboxes -->
+ <ul>
+    <li><input type="checkbox" id="sha1"> SHA-1</li>
+    <li><input type="checkbox" id="sha256"> SHA-256</li>
+    <li><input type="checkbox" id="sha512"> SHA-512</li>
+    <li><input type="checkbox" id="md5"> MD5</li>
+    <li><input type="checkbox" id="blake2b"> BLAKE2b</li>
+    <li><input type="checkbox" id="blake2s"> BLAKE2s</li>
+    <li><input type="checkbox" id="whirlpool"> Whirlpool</li>
+    <li><input type="checkbox" id="tiger"> Tiger</li>
+ </ul>
+
+<!-- Control buttons -->
+<button id="selectAll">Select All</button>
+<button id="deselectAll">Deselect All</button>
+<button id="calculateBtn" disabled>Calculate Hashes</button>
+
+<script type="module">
+    import init, { hasher_results } from '/pkg/hasher_wasm.js';
+
+    const fileInput = document.getElementById('fileInput');
+    const calculateBtn = document.getElementById('calculateBtn');
+    const resultsOutput = document.getElementById('results');
+    const selectAllBtn = document.getElementById('selectAll');
+    const deselectAllBtn = document.getElementById('deselectAll');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    async function run() {
+        await init();
+        fileInput.disabled = false;
+        
+        // Enable/disable calculate button based on file selection
+        fileInput.addEventListener('change', () => {
+            calculateBtn.disabled = !fileInput.files.length;
+        });
+
+        // Select/Deselect all functionality
+        selectAllBtn.addEventListener('click', () => {
+            checkboxes.forEach(checkbox => checkbox.checked = true);
+        });
+
+        deselectAllBtn.addEventListener('click', () => {
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+        });
+
+        // Calculate hashes when button is clicked
+        calculateBtn.addEventListener('click', async () => {
+            // Check if any algorithm is selected
+            const selectedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            if (selectedCount === 0) {
+                const div = document.createElement('div');
+                div.innerHTML = '<p>Please select at least one hashing algorithm.</p>';
+                resultsOutput.innerHTML = '';
+                resultsOutput.appendChild(div);
+                return;
+            }
+
+            // Add size validation after algorithm check
+            const file = fileInput.files[0];
+            const MAX_FILE_SIZE = 1.5 * 1024 * 1024 * 1024; // 1.5GB limit
+            /*
+            This limit is required because of the limits of the WebAssembly memory and the browser's FileReader API.
+            The maximum size of a file that can be processed is 1.5GB.
+            */
+
+            if (file.size > MAX_FILE_SIZE) {
+                const div = document.createElement('div');
+                div.innerHTML = '<p>File is too large. Please select a file smaller than 1.5GB.</p>';
+                resultsOutput.innerHTML = '';
+                resultsOutput.appendChild(div);
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = async function(e) {
+                const arrayBuffer = e.target.result;
+                const bytes = new Uint8Array(arrayBuffer);
+                
+                // Get selected algorithms
+                const selectedAlgorithms = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.id)
+                    .join(' ');
+
+                const results = hasher_results(bytes, selectedAlgorithms);
+                displayResults(results);
+            };
+
+            reader.readAsArrayBuffer(file);
+        });
+    }
+
+    function displayResults(results) {
+        // Create table
+        let table = `
+        <table style="width:100%; margin-top: 20px; border-collapse: collapse; table-layout: fixed;">
+            <tr>
+                <th style="text-align: left; padding: 8px; border: 1px solid #ddd; width: 20%;">Algorithm</th>
+                <th style="text-align: left; padding: 8px; border: 1px solid #ddd; width: 80%;">Hash</th>
+            </tr>
+    `;
+
+        // Split results into lines and process each
+        results.split('\n').forEach(line => {
+        const [algorithm, ...hashParts] = line.split(' ');
+        const hash = hashParts.join(' ');
+        table += `
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">${algorithm}</td>
+                <td style="padding: 8px; border: 1px solid #ddd; font-family: monospace; 
+                    word-wrap: break-word; word-break: break-all;">${hash}</td>
+            </tr>
+        `;
+    });
+
+        table += '</table>';
+        
+        // Add copy buttons for each hash
+        const div = document.createElement('div');
+        div.innerHTML = table;
+        resultsOutput.innerHTML = '';
+        resultsOutput.appendChild(div);
+    }
+
+    run();
+</script>
+<div id="results"></div>
