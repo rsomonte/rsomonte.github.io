@@ -9,6 +9,7 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 # For WebAssembly bindings
 wasm-bindgen = "0.2.100"
+js-sys = "0.3"
 
 # Direct Git dependency on your core library
 # IMPORTANT: Replace the URL with the actual URL of your core repository
