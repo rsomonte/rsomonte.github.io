@@ -1,5 +1,5 @@
 [package]
-name = "filetype-wasm"
+name = "ufile-wasm"
 version = "0.1.0"
 edition = "2024"
 
@@ -12,4 +12,4 @@ wasm-bindgen = "0.2.100"
 
 # Direct Git dependency on your core library
 # IMPORTANT: Replace the URL with the actual URL of your core repository
-filetype-core = { git = "https://github.com/rsomonte/filetype-core.git", branch = "main" }
+ufile-core = { git = "https://github.com/rsomonte/ufile-core.git", branch = "main" }

@@ -1,7 +1,7 @@
 use wasm_bindgen::prelude::*;
 
 // Import the function and struct from your core library
-use filetype_core::{identify_from_bytes, FileInfo};
+use ufile_core::{identify_from_bytes, FileInfo};
 
 #[wasm_bindgen]
 pub fn identify_file_wasm(bytes: &[u8]) -> String {
