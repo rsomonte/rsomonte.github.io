@@ -6,7 +6,7 @@
     "wasm-pack": "^0.13.1"
   },
   "scripts": {
-    "build:wasm": "wasm-pack build ./filetype_wasm --target web --out-dir ../docs/pkg && wasm-pack build ./hasher_wasm --target web --out-dir ../docs/pkg",
+    "build:wasm": "wasm-pack build ./ufile_wasm --target web --out-dir ../docs/pkg && wasm-pack build ./hasher_wasm --target web --out-dir ../docs/pkg",
     "build-ghpages": "npm run build:wasm && npx @11ty/eleventy --pathprefix=/"
   }
 }
