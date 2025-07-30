@@ -31,16 +31,16 @@
         <!-- Page-specific content goes here -->
         
 <h1>File Type Identifier</h1>
-<p>Select a file from your computer to identify its type using Rust and WebAssembly. The entire process runs locally in your browser.</p>
+<p>Select one or multiple files from your computer to identify their types using Rust and WebAssembly. The entire process runs locally in your browser.</p>
 
-<input type="file" id="upload" class="message-box" />
+<input type="file" id="upload" class="message-box" multiple />
 <hr>
 <h3>Results:</h3>
-<pre id="results"; class="message-box">Awaiting file...</pre>
+<div id="results" class="message-box">Awaiting file(s)...</div>
 
 <script type="module">
-  // Import the wasm-pack generated JS and your Wasm function
-  import init, { identify_file_wasm } from '/pkg/ufile_wasm.js';
+  // Import the wasm-pack generated JS and your Wasm functions
+  import init, { identify_file_wasm, identify_multiple_files_wasm } from '/pkg/ufile_wasm.js';
 
   async function main() {
     // Initialize the Wasm module.
@@ -49,40 +49,76 @@
     const fileInput = document.getElementById('upload');
     const resultsOutput = document.getElementById('results');
 
-    fileInput.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (!file) {
-        resultsOutput.textContent = 'Awaiting file...';
+    fileInput.addEventListener('change', async (event) => {
+      const files = event.target.files;
+      if (!files || files.length === 0) {
+        resultsOutput.textContent = 'Awaiting file(s)...';
         return;
       }
 
-      const reader = new FileReader();
+      resultsOutput.innerHTML = ''; // Clear previous results
 
-      // This function runs AFTER the file is read successfully
-      reader.onload = (e) => {
-        // Get the file's bytes as a Uint8Array
-        const bytes = new Uint8Array(e.target.result);
+      if (files.length === 1) {
+        // Single file - use original function for backward compatibility
+        const file = files[0];
+        const reader = new FileReader();
         
-        // Call your Rust function!
-        const fileInfo = identify_file_wasm(bytes);
+        reader.onload = (e) => {
+          const bytes = new Uint8Array(e.target.result);
+          const fileInfo = identify_file_wasm(bytes);
+          resultsOutput.innerHTML = `<table border="1"><tr><th>File Name</th><th>Description</th></tr><tr><td>${file.name}</td><td>${fileInfo}</td></tr></table>`;
+        };
         
-        // Display the result
-        resultsOutput.textContent = fileInfo;
-      };
-      
-      // This function runs if there's an error reading the file
-      reader.onerror = () => {
+        reader.onerror = () => {
           resultsOutput.textContent = `Error: Could not read the file "${file.name}".`;
-      };
+        };
+        
+        reader.readAsArrayBuffer(file);
+      } else {
+        // Multiple files - use new batch function
+        try {
+          const fileDataArray = [];
+          const fileNames = [];
+          
+          // Read all files
+          for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            fileNames.push(file.name);
+            
+            const arrayBuffer = await readFileAsArrayBuffer(file);
+            const bytes = new Uint8Array(arrayBuffer);
+            fileDataArray.push(bytes);
+          }
+          
+          // Process all files at once
+          const descriptions = identify_multiple_files_wasm(fileDataArray);
+          
+          // Format results into a table
+          let tableHTML = '<table border="1"><tr><th>File Name</th><th>Description</th></tr>';
+          for (let i = 0; i < fileNames.length; i++) {
+            tableHTML += `<tr><td>${fileNames[i]}</td><td>${descriptions[i]}</td></tr>`;
+          }
+          tableHTML += '</table>';
+          
+          resultsOutput.innerHTML = tableHTML;
+        } catch (error) {
+          resultsOutput.textContent = `Error processing files: ${error.message}`;
+        }
+      }
+    });
+  }
 
-      resultsOutput.textContent = `Analyzing "${file.name}"...`;
-      
-      // Start reading the file
+  // Helper function to read file as ArrayBuffer using Promise
+  function readFileAsArrayBuffer(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = e => resolve(e.target.result);
+      reader.onerror = () => reject(new Error(`Could not read file "${file.name}"`));
       reader.readAsArrayBuffer(file);
     });
   }
 
-  main().catch(console.error); // Keep this to log any potential initialization errors in the future.
+  main().catch(console.error);
 </script>
     </main>
     <footer>
