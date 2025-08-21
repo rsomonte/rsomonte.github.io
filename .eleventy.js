@@ -23,6 +23,10 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("styles.css");
     // This copies the favicon to the output folder
     eleventyConfig.addPassthroughCopy("favicon.ico");
+    // This copies the room.js file to docs/tools/roomcanvas/room.js
+    eleventyConfig.addPassthroughCopy({
+        "content/tools/room.js": "tools/roomcanvas/room.js"
+    });
     
     // Enable excerpts
     eleventyConfig.setFrontMatterParsingOptions({

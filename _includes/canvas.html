@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title | default:"rsomonte's website" }}</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-link">rsomonte&#39;s website</a>
+        <nav>
+            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+            <ul class="nav">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="/posts/">Blog</a></li>
+                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                <li class="nav-item"><a href="/tools/">Tools</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main style="max-width: 100%; color: black">
+        <!-- Page-specific content goes here -->
+        {{ content }}
+    </main>
+    <footer>
+        <hr>
+        <div class="footer-content">
+            <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+            <div class="social-icons">
+                <a href="https://www.github.com/rsomonte">
+                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub icon" style="height:3em; vertical-align: middle;">
+                </a>
+                <a href="https://www.linkedin.com/in/rodrigo-de-diego-de-somonte/">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn icon" style="height: 2em; vertical-align: middle;">
+                </a>
+            </div>
+        </div>
+        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
+    </footer>
+</body>
+</html>
