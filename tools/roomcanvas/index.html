@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Designer</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-link">rsomonte&#39;s website</a>
+        <nav>
+            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+            <ul class="nav">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="/posts/">Blog</a></li>
+                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                <li class="nav-item"><a href="/tools/">Tools</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main style="max-width: 100%; color: black">
+        <!-- Page-specific content goes here -->
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room Designer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f4f4f4;
+      overflow: hidden;
+    }
+
+    #app {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    canvas {
+      display: block;
+      background: white;
+      cursor: crosshair;
+    }
+
+    #furnitureMenu {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 240px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 16px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    #furnitureMenu.hidden {
+      display: none;
+    }
+
+    #menuToggle {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      padding: 10px 14px;
+      background: #444;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 100;
+    }
+
+    #toolMenu {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #toolMenu button {
+      border: none;
+      padding: 6px 12px;
+      background: #eee;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #toolMenu button:hover {
+      background: #ddd;
+    }
+    #toolMenu button.active {
+      background: #4CAF50;
+      color: white;
+    }
+
+    /* Color row for bucket tool */
+    #toolMenu .color-row {
+      display: none; /* shown when Bucket is active */
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    #toolMenu .color-row label {
+      font-size: 12px;
+      color: #444;
+    }
+    #toolMenu .color-row input[type="color"] {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    /* Draggable menu headers */
+    .menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 600;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 6px 8px;
+      cursor: move;
+      user-select: none;
+      margin-bottom: 6px;
+    }
+    .menu-header .title {
+      font-size: 14px;
+    }
+    .menu-header .close-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      line-height: 1;
+      padding: 2px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .menu-header .close-btn:hover {
+      background: #e9e9e9;
+    }
+
+    .category {
+      margin-top: 12px;
+    }
+
+    .item-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .item {
+      background: #e0e0ff;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.2s ease;
+      text-align: center;
+      min-width: 50px;
+    }
+
+    .item:hover {
+      background: #c0c0ff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+  body {
+    background: #181818;
+    color: #e0e0e0;
+  }
+  #app {
+    background: #181818;
+  }
+  canvas {
+    background: #222;
+  }
+  #furnitureMenu,
+  #toolMenu {
+    background: #23232a;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  }
+  #menuToggle {
+    background: #333;
+    color: #e0e0e0;
+  }
+  .menu-header {
+    background: #222;
+    color: #e0e0e0;
+  }
+  .item {
+    background: #333366;
+    color: #e0e0e0;
+  }
+  .item:hover {
+    background: #222244;
+  }
+  #toolMenu button {
+    background: #333;
+    color: #e0e0e0;
+  }
+  #toolMenu button:hover {
+    background: #222;
+  }
+  #toolMenu button.active {
+    background: #388e3c;
+    color: #fff;
+  }
+}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <canvas id="roomCanvas"></canvas>
+
+    <div id="toolMenu" class="rounded-menu">
+      <div class="menu-header" data-drag-handle="toolMenu">
+        <span class="title">Tools</span>
+        <span style="font-size:12px;color:#666;">drag</span>
+      </div>
+      <button id="selectBtn" onclick="setTool('select')">🤚 Move Object</button>
+      <button id="drawBtn" onclick="setTool('draw')" class="active">📏 Draw</button>
+      <button id="rotateBtn" onclick="setTool('rotate')">🔄 Rotate</button>
+      <button id="deleteBtn" onclick="setTool('delete')">❌ Delete</button>
+      <button id="bucketBtn" onclick="setTool('bucket')">🪣 Bucket</button>
+      <div class="color-row" id="colorRow">
+        <label for="colorPicker">Color</label>
+        <input type="color" id="colorPicker" value="#c0c0ff" />
+      </div>
+    </div>
+    <div id="furnitureMenu" class="menu hidden">
+      <div class="menu-header" data-drag-handle="furnitureMenu">
+        <span class="title">Furniture</span>
+        <button class="close-btn" title="Close" onclick="toggleMenu()">✕</button>
+      </div>
+
+      <div class="category">
+        <span>🛏️ Beds</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('bed90')">90cm</div>
+          <div class="item" onclick="selectFurniture('bed150')">150cm</div>
+          <div class="item" onclick="selectFurniture('bedQueen')">Queen</div>
+          <div class="item" onclick="selectFurniture('bedKing')">King</div>
+        </div>
+      </div>
+
+      <div class="category">
+        <span>🪑 Chairs</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('chair')">Basic</div>
+          <div class="item" onclick="selectFurniture('gamingChair')">Gaming</div>
+          <div class="item" onclick="selectFurniture('officeChair')">Office</div>
+          <div class="item" onclick="selectFurniture('regularArmchair')">Armchair</div>
+          <div class="item" onclick="selectFurniture('largeArmchair')">Large Armchair</div>
+        </div>
+      </div>
+
+      <div class="category">
+        <span>🖥️ Desks</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('smallOfficeDesk')">Small</div>
+          <div class="item" onclick="selectFurniture('regularOfficeDesk')">Regular</div>
+          <div class="item" onclick="selectFurniture('largeOfficeDesk')">Large</div>
+        </div>
+      </div>
+
+      <div class="category">
+        <span>🛋️ Sofas</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('regularSofa')">Regular</div>
+          <div class="item" onclick="selectFurniture('largeSofa')">Large</div>
+          <div class="item" onclick="selectFurniture('lShapedSofa')">L-Shaped</div>
+        </div>
+      </div>
+
+      <div class="category">
+        <span>🍽️ Tables</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('table')">Table</div>
+        </div>
+      </div>
+
+      <div class="category">
+        <span>📚 Storage</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('regularBookshelf')">Bookshelf</div>
+          <div class="item" onclick="selectFurniture('smallNightstand')">Small Nightstand</div>
+          <div class="item" onclick="selectFurniture('regularNightstand')">Nightstand</div>
+          <div class="item" onclick="selectFurniture('largeNightstand')">Large Nightstand</div>
+        </div>
+      </div>
+
+      <div class="category">
+        <span>🪴 Plants</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('smallFlowerPot')">Small</div>
+          <div class="item" onclick="selectFurniture('regularFlowerPot')">Regular</div>
+          <div class="item" onclick="selectFurniture('largeFlowerPot')">Large</div>
+        </div>
+      </div>
+
+      <div class="category">
+        <span>🚪 Doors</span>
+        <div class="item-row">
+          <div class="item" onclick="selectFurniture('door')">Standard</div>
+          <div class="item" onclick="selectFurniture('doorMirrored')">Mirrored</div>
+        </div>
+      </div>      
+    </div>
+
+    
+
+    <button id="menuToggle" onclick="toggleMenu()">🪟</button>
+  </div>
+
+  <script src="room.js"></script>
+</body>
+
+
+</html>
+
+    </main>
+    <footer>
+        <hr>
+        <div class="footer-content">
+            <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+            <div class="social-icons">
+                <a href="https://www.github.com/rsomonte">
+                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub icon" style="height:3em; vertical-align: middle;">
+                </a>
+                <a href="https://www.linkedin.com/in/rodrigo-de-diego-de-somonte/">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn icon" style="height: 2em; vertical-align: middle;">
+                </a>
+            </div>
+        </div>
+        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
+    </footer>
+</body>
+</html>
