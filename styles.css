@@ -407,3 +407,235 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px; 
     margin-bottom: 0; 
 }
+
+/* High Contrast Toggle Button */
+.post-title-container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.post-title-container h1 {
+    margin: 0;
+    flex: 1;
+}
+
+.contrast-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 2.5em;
+    padding: 0 1.5em;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--text-color-link);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.contrast-toggle-btn:hover {
+    background-color: var(--text-color-link);
+    color: var(--background-color);
+    transform: scale(1.05);
+}
+
+.contrast-toggle-btn:focus {
+    outline: 3px solid var(--text-color-link-active);
+    outline-offset: 2px;
+}
+
+.contrast-toggle-btn.active {
+    background-color: var(--text-color-link);
+    color: var(--background-color);
+    border-color: var(--text-color-link);
+    font-weight: 700;
+}
+
+.contrast-toggle-btn.active:hover {
+    background-color: var(--text-color-link-active);
+    border-color: var(--text-color-link-active);
+}
+
+.contrast-label {
+    font-size: 1em;
+}
+
+/* High Contrast Mode - Text Only */
+html.high-contrast-mode {
+    --background-color: #f5f5f5;
+    --text-color: #1a1a1a;
+    --text-color-link: #0047ab;
+    --text-color-link-active: #005a99;
+    --text-color-link-visited: #663399;
+    --header-background-color: #e8e8e8;
+    --footer-background-color: #e8e8e8;
+}
+
+html.high-contrast-mode body {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode main {
+    background-color: #ffffff;
+    padding: 2em;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+html.high-contrast-mode header,
+html.high-contrast-mode footer {
+    background-color: #e8e8e8;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode p,
+html.high-contrast-mode li,
+html.high-contrast-mode td,
+html.high-contrast-mode th,
+html.high-contrast-mode span,
+html.high-contrast-mode div {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    line-height: 1.7;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode h1,
+html.high-contrast-mode h2,
+html.high-contrast-mode h3,
+html.high-contrast-mode h4,
+html.high-contrast-mode h5,
+html.high-contrast-mode h6 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode a[href] {
+    font-weight: 600;
+    color: #0047ab;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+html.high-contrast-mode a[href]:visited {
+    color: #663399;
+    text-decoration-style: dashed;
+}
+
+html.high-contrast-mode a[href]:hover,
+html.high-contrast-mode a[href]:active {
+    color: #005a99;
+    background-color: #e8f0ff;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+html.high-contrast-mode code,
+html.high-contrast-mode pre {
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: #1a1a1a;
+    background-color: #f0f0f0;
+    padding: 0.1em 0.3em;
+    border: 1px solid #999999;
+    border-radius: 3px;
+}
+
+html.high-contrast-mode pre {
+    padding: 1em;
+    border: 2px solid #999999;
+    margin: 0.5em 0;
+    overflow-x: auto;
+}
+
+html.high-contrast-mode strong,
+html.high-contrast-mode b {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode em,
+html.high-contrast-mode i {
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode table {
+    border-collapse: collapse;
+    border: 2px solid #999999;
+    background-color: #ffffff;
+}
+
+html.high-contrast-mode table th {
+    font-weight: 700;
+    border: 2px solid #999999;
+    padding: 0.8em;
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode table td {
+    border: 1px solid #999999;
+    padding: 0.6em;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode hr {
+    border: 2px solid #999999;
+    background-color: #999999;
+}
+
+html.high-contrast-mode .post-date,
+html.high-contrast-mode .post-tags {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode .post-tag {
+    font-weight: 600;
+    padding: 0.4em 0.8em;
+    border: 2px solid #0047ab;
+    border-radius: 4px;
+    background-color: #e8f0ff;
+    color: #0047ab;
+    text-transform: capitalize;
+}
+
+html.high-contrast-mode .message-box {
+    background-color: #fff9e6;
+    border: 2px solid #999999;
+    border-radius: 4px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode .message-box h3 {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+html.high-contrast-mode .links-nextprev {
+    border-top: 2px solid #999999;
+    padding-top: 1.5em;
+    margin-top: 2em;
+}
+
+html.high-contrast-mode .links-nextprev p {
+    font-weight: 600;
+    color: #1a1a1a;
+}
