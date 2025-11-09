@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>An Update on TaskerBot's Hosting</title>
+    <title>Dev-Update | November 2025</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
@@ -32,14 +32,14 @@
         <head><link href="https://fonts.googleapis.com/css2?family=Libre+Clarendon:wght@700&display=swap" rel="stylesheet"></head> <!-- Don't quite remember why this is here xd -->
 
 <div class="post-title-container">
-    <h1><u>An Update on TaskerBot's Hosting</u></h1>
+    <h1><u>Dev-Update | November 2025</u></h1>
     <button id="contrast-toggle" class="contrast-toggle-btn" aria-label="Toggle high contrast mode" title="Toggle high contrast text">
         <span class="contrast-label">High Contrast</span>
     </button>
 </div>
 
 <!-- This shows the date and tags -->
-<p class="post-date" style="margin-bottom: 0.2em; margin-top: -1em;">Published on: September 03, 2025</p>
+<p class="post-date" style="margin-bottom: 0.2em; margin-top: -1em;">Published on: November 09, 2025</p>
 <p class="post-tags" style="margin-top: 0.2em;">
     Tags: 
     
@@ -60,16 +60,40 @@
         <a href="/tags/hosting/" class="post-tag">hosting</a>
     
     
+    
+        
+        <a href="/tags/dev update/" class="post-tag">dev update</a>
+    
+    
 </p>
 
-<p>Finding a good host for TaskerBot turned out to be harder than I thought. After a few failed tries with other services, I've landed on a temporary solution: running it on my own machine with Docker.</p>
-<hr>
-<p>In my last post, I mentioned I'd be moving TaskerBot off its initial hosting service. I figured it would be a simple switch, but I was wrong.</p>
-<p>I tried a few different hosting options, but they all had problems. Some didn't support what I needed, others just didn't work right. I got frustrated and had to leave the project alone for a bit until I had a better idea.</p>
-<p>That idea came while I was learning Docker and Docker Compose. I realized I could just self-host it on my laptop for now. So I did. I put the Docker and Docker Compose files up on <a href="https://github.com/rsomonte/taskerbot">my GitHub</a> if anyone wants to see them. It's working well, but it's not a permanent fix.</p>
-<p>This isn't the final plan, though. A few months back I had the idea to build my own server with an Optiplex I bought. I wanted to self-host my own stuff and depend less on big companies. I haven't started yet because I had to move, and now I'm just waiting for the server (and all my other things) to arrive.</p>
-<p>Once it gets here, I'll be able to host TaskerBot properly, 24/7, without worrying about my laptop sleeping. When I finally get it all set up, I'll write another post about the server and how I've got everything structured.</p>
-<p>Thanks for reading.</p>
+<p>A quick progress update from the past few months: I have been setting up a small self-hosting environment, learning Docker and Kubernetes, building a few small tools, and helping a friend with QA. Below are the highlights with inline links to the projects mentioned.</p>
+<h2>What I’ve been doing</h2>
+<ul>
+<li>I set up a personal server and migrated several services off my laptop to reduce downtime. It currently runs <a href="https://github.com/rsomonte/taskerbot">TaskerBot</a> and a personal instance of Ente (still ironing out the setup).</li>
+<li>I am learning Docker and using Docker Compose to keep deployments reproducible. Kubernetes is on the roadmap and I am experimenting with it for future scaling.</li>
+<li>Published a Firefox add-on to block domains per workspace. It is available on Firefox Browser Add-ons at <a href="https://addons.mozilla.org/addon/container-website-blocker/">Container Website Blocker</a> and the source code is at <a href="https://github.com/rsomonte/container-blocker">GitHub</a>.</li>
+<li>I have also worked on a simple CLI tool that helps the user get keyphrases that will surface low view-count videos. This was something I did more for fun than for need, because I started watching KVN AUST's YouTube &quot;recycle bin&quot; series and I wondered how it would be if there was an automated tool to get the keyphrases. I also did it to get familiarized with Groovy, because I was told that I was going to deal with it at work. The tool ships with a Windows executable (.exe) and the repo is at <a href="https://github.com/rsomonte/DigTube">DigTube</a>.</li>
+<li>Performed QA for <a href="https://www.linkedin.com/company/registrap/">Registrap</a>, a no-code platform by <a href="https://www.linkedin.com/in/jcasttrop/">Julian Castro</a> that unifies tracking across domains such as fitness, finances, health, habits, and more using custom structures and AI-assisted analysis.</li>
+</ul>
+<h2>Server</h2>
+<p>I bought an Optiplex and moved services to the dedicated machine. Docker Compose handles deployments and keeps the setup repeatable. I hit some startup issues with Ente (the &quot;quick start&quot; script required manual tweaks) but the instance is now mostly stable.</p>
+<h2>Tooling and development</h2>
+<ul>
+<li>Docker / Compose: primary tooling for development and deployments.</li>
+<li>Kubernetes: learning and evaluating for future deployments.</li>
+<li>Firefox extension: published and maintained on AMO, source on GitHub.</li>
+<li>DigTube: CLI with .exe, focused on metadata extraction and keyphrase suggestions to help low-view creators.</li>
+</ul>
+<h2>QA</h2>
+<p>Helped with testing workflows and edge cases to improve user experience, intuitivity, and UI feedback for Registrap.</p>
+<h2>Next steps</h2>
+<ul>
+<li>Learn Android development.</li>
+<li>Continue learning Kubernetes.</li>
+<li>Buy more storage for the server and add more services to it.</li>
+</ul>
+<p>Thanks for reading. If you want configs or notes from any of these projects, ping me and I will share them.</p>
 
 
 <!-- This shows the previous and next posts at the end of the post -->
@@ -79,14 +103,11 @@
 
     <div class="links-nextprev-previous">
         
-            <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Previous post</p>
-            <a href="/posts/dev.update.11.25/">&larr; Dev-Update | November 2025</a>
-        
     </div>
     <div class="links-nextprev-next">
         
             <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Next post</p>
-            <a href="/posts/taskerbot/">How I built Taskerbot &rarr;</a>
+            <a href="/posts/bot_hosting/">An Update on TaskerBot's Hosting &rarr;</a>
         
     </div>
 </nav>

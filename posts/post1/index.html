@@ -30,7 +30,13 @@
         </div>
         <!-- Page-specific content goes here -->
         <head><link href="https://fonts.googleapis.com/css2?family=Libre+Clarendon:wght@700&display=swap" rel="stylesheet"></head> <!-- Don't quite remember why this is here xd -->
-<h1><u>Building My First Website: Homer's Odyssey</u></h1>
+
+<div class="post-title-container">
+    <h1><u>Building My First Website: Homer's Odyssey</u></h1>
+    <button id="contrast-toggle" class="contrast-toggle-btn" aria-label="Toggle high contrast mode" title="Toggle high contrast text">
+        <span class="contrast-label">High Contrast</span>
+    </button>
+</div>
 
 <!-- This shows the date and tags -->
 <p class="post-date" style="margin-bottom: 0.2em; margin-top: -1em;">Published on: May 25, 2025</p>
@@ -83,6 +89,55 @@
     </div>
 </nav>
 
+<script>
+    // High Contrast Toggle Functionality
+    (function() {
+        const STORAGE_KEY = 'high-contrast-mode';
+        const CONTRAST_CLASS = 'high-contrast-mode';
+        const button = document.getElementById('contrast-toggle');
+        
+        // Load saved preference
+        function loadContrastPreference() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved === 'enabled') {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                updateButtonState(true);
+            }
+        }
+        
+        // Update button appearance
+        function updateButtonState(isEnabled) {
+            if (isEnabled) {
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+            } else {
+                button.classList.remove('active');
+                button.setAttribute('aria-pressed', 'false');
+            }
+        }
+        
+        // Toggle contrast mode
+        function toggleContrast() {
+            const isCurrentlyEnabled = document.documentElement.classList.contains(CONTRAST_CLASS);
+            if (isCurrentlyEnabled) {
+                document.documentElement.classList.remove(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'disabled');
+                updateButtonState(false);
+            } else {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'enabled');
+                updateButtonState(true);
+            }
+        }
+        
+        // Initialize
+        if (button) {
+            loadContrastPreference();
+            button.addEventListener('click', toggleContrast);
+            button.setAttribute('aria-pressed', document.documentElement.classList.contains(CONTRAST_CLASS));
+        }
+    })();
+</script>
     </main>
     <footer>
         <hr>
