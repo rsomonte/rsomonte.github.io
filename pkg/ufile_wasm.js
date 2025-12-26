@@ -17,6 +17,16 @@ function getStringFromWasm0(ptr, len) {
     ptr = ptr >>> 0;
     return cachedTextDecoder.decode(getUint8ArrayMemory0().subarray(ptr, ptr + len));
 }
+/**
+ * Process multiple files and return their descriptions
+ * Takes an array of Uint8Array objects and returns an array of description strings
+ * @param {Array<any>} file_data_array
+ * @returns {Array<any>}
+ */
+export function identify_multiple_files_wasm(file_data_array) {
+    const ret = wasm.identify_multiple_files_wasm(file_data_array);
+    return ret;
+}
 
 let WASM_VECTOR_LEN = 0;
 
@@ -44,17 +54,6 @@ export function identify_file_wasm(bytes) {
     } finally {
         wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
     }
-}
-
-/**
- * Process multiple files and return their descriptions
- * Takes an array of Uint8Array objects and returns an array of description strings
- * @param {Array<any>} file_data_array
- * @returns {Array<any>}
- */
-export function identify_multiple_files_wasm(file_data_array) {
-    const ret = wasm.identify_multiple_files_wasm(file_data_array);
-    return ret;
 }
 
 async function __wbg_load(module, imports) {

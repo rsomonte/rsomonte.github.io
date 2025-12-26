@@ -1,14 +1,14 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Original single file identification function (maintained for backward compatibility)
- */
-export function identify_file_wasm(bytes: Uint8Array): string;
-/**
  * Process multiple files and return their descriptions
  * Takes an array of Uint8Array objects and returns an array of description strings
  */
 export function identify_multiple_files_wasm(file_data_array: Array<any>): Array<any>;
+/**
+ * Original single file identification function (maintained for backward compatibility)
+ */
+export function identify_file_wasm(bytes: Uint8Array): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
