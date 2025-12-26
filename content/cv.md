@@ -5,7 +5,7 @@ title: "Curriculum Vitae | rsomonte's website"
 
 <h1 style="text-align: center;">Rodrigo de Diego de Somonte</h1>
 <h2 style="text-align: center;">Cybersecurity Specialist | Software Developer</h2>
-<h3 style="text-align: center;">✉ <a href="mailto:rodrigodsc@protonmail.ch">rodrigodsc@protonmail.ch</a> | <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Flinked-in-icon-black-and-white%2Flinked-in-icon-black-and-white-2.jpg&f=1&nofb=1&ipt=9de377bdf71b57f841ffefc9f50d2459eee121d1db396eeda25c7e78a2957ab1" alt="icon" style="height: 1em; vertical-align: middle;"> <a href="https://www.linkedin.com/in/rodrigo-de-diego-de-somonte/">rodrigo-de-diego-de-somonte</a></h3>
+<h3 style="text-align: center;">✉ <a href="mailto:rodrigodsc@protonmail.ch">rodrigodsc@protonmail.ch</a> | <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Flinked-in-icon-black-and-white%2Flinked-in-icon-black-and-white-2.jpg&f=1&nofb=1&ipt=9de377bdf71b57f841ffefc9f50d2459eee121d1db396eeda25c7e78a2957ab1" alt="icon" style="height: 1em; vertical-align: middle;"> <a href="https://www.linkedin.com/in/rsomonte/">rsomonte</a></h3>
 
 ## <u>Profile</u>
 
