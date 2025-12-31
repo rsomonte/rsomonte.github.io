@@ -10,9 +10,7 @@ title: "Curriculum Vitae | rsomonte's website"
 ## <u>Profile</u>
 
 
-Detail-oriented programmer with a 3.9 GPA and a strong foundation in Python, Java, and Rust. Demonstrated full-stack develop-
-ment skills by building and deploying a Discord bot with JavaScript and engineering a reusable Rust library compiled to WebAs-
-sembly. Seeking a developer position to contribute to building efficient and secure software applications.
+Cybersecurity focused Software Engineer with professional experience in enterprise application development and secure system design. Currently developing high integrity solutions using Python and React at GMV, following a successful tenure at Thales optimizing Java systems and CI/CD pipelines. I hold a Bachelor of Science in Cybersecurity and am pursuing a second degree in Computer Science, maintaining a 3.9 GPA alongside CompTIA A+, Security+, and Linux+ certifications. I am dedicated to building scalable, secure, and efficient software.
 
 <div class="cvcolumn" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
   <div class="cvbox" style="padding: 15px; border-radius: 10px;">
@@ -41,79 +39,59 @@ sembly. Seeking a developer position to contribute to building efficient and sec
   </div>
 </div>
 
-## <u>Projects</u>
+## <u>Work Experience</u>
 <div>
   <div style="display: grid; grid-template-columns: 1fr 1fr; font-weight: bold">
-    <div><img src="https://www.pngarts.com/files/8/Github-Logo-Transparent-Background-PNG.png" alt="icon" style="height: 1em; vertical-align: middle;"><a href="https://github.com/rsomonte/rsomonte.github.io">rsomonte.github.io</a></div>
-    <div><p style="text-align: right">May 2025</p></div>
+    <div>Software Engineer | GMV</div>
+    <div><p style="text-align: right">Dec 2025 - Present</p></div>
   </div>
   <ul>
-    <li>Built a personal website using 11ty (Eleventy), a modern static site generator, to showcase web development skills and host project writeups.</li>
-    <li>Integrated a custom Wasm-based file identifier enabling client-side file type detection via a Rust core module.</li>
-    <li>Structured modular layout templates to separate content and logic, improving maintainability and scalability.</li>
-    <li>Deployed via GitHub Pages with automated publishing for fast and zero-cost hosting.</li>
+    <li>Develop web application backends using FastAPI and Flask to support cybersecurity tools.</li>
+    <li>Implement data manipulation and processing logic using Pandas for internal datasets.</li>
+    <li>Build and maintain user interfaces using React, ensuring integration with Python backend services.</li>
+    <li>Write secure, maintainable code following strict internal security guidelines and version control practices.</li>
   </ul>
   <div class="word-boxes-container">
-    <span class="word-box">HTML5</span>
-    <span class="word-box">CSS</span>
-    <span class="word-box">Version Control</span>
-    <span class="word-box">11ty</span>
-    <span class="word-box">WebAssembly</span>
+    <span class="word-box">FastAPI</span>
+    <span class="word-box">Flask</span>
+    <span class="word-box">Pandas</span>
+    <span class="word-box">React</span>
   </div>
 </div>
 
 <div>
   <div style="display: grid; grid-template-columns: 1fr 1fr; font-weight: bold">
-    <div><img src="https://www.pngarts.com/files/8/Github-Logo-Transparent-Background-PNG.png" alt="icon" style="height: 1em; vertical-align: middle;"><a href="https://github.com/rsomonte/taskerbot">Tasker Bot</a></div>
-    <div><p style="text-align: right">June 2025</p></div>
+    <div>QA Tester (Contract) | Registrap</div>
+    <div><p style="text-align: right">Oct 2025 - Present</p></div>
   </div>
   <ul>
-    <li>Built a Discord bot in JavaScript to help users set and track personal objectives with frequency-based submission limits.</li>
-    <li>Implemented slash commands for user interaction and accountability.</li>
-    <li>Enforced time-based constraints on submissions (daily, weekly, monthly) and tracked consecutive streaks for each objective.</li>
-    <li>Required image proof for each submission, validating task completion before updating streak data.</li>
-    <li>Engineered a persistent data layer to manage user objectives and submission history with reliable long-term tracking.</li>
+    <li>Execute ad-hoc beta testing cycles for new feature releases, adapting to dynamic development schedules.</li>
+    <li>Identify and document critical edge-case bugs via GitHub to prevent deployment failures.</li>
+    <li>Verify UI/UX consistency across different environments during pre-release sprints.</li>
   </ul>
   <div class="word-boxes-container">
-    <span class="word-box">JavaScript</span>
-    <span class="word-box">Discord API</span>
-    <span class="word-box">Version Control</span>
+    <span class="word-box">GitHub</span>
+    <span class="word-box">Beta Testing</span>
+    <span class="word-box">Quality Assurance</span>
   </div>
 </div>
+
 <div>
   <div style="display: grid; grid-template-columns: 1fr 1fr; font-weight: bold">
-    <div><img src="https://www.pngarts.com/files/8/Github-Logo-Transparent-Background-PNG.png" alt="icon" style="height: 1em; vertical-align: middle;"><a href="https://github.com/rsomonte/filetype-core">Filetype Core</a></div>
-    <div><p style="text-align: right">June 2025</p></div>
+    <div>Software Developer Intern | Thales</div>
+    <div><p style="text-align: right">Oct 2025 - Nov 2025</p></div>
   </div>
   <ul>
-    <li>Authored a Rust library to accurately detect file types based on file signatures and binary content.</li>
-    <li>Leveraged Rust’s safety and performance features to ensure efficient, secure file type detection.</li>
-    <li>Built as a core engine to be reusable in multiple applications and environments, including browser-based tools via WebAssembly.</li>
-    <li>Structured project for easy integration and future extensibility.</li>
+    <li>Assisted in the optimization of enterprise Java/JSP applications within a strict one-month project scope.</li>
+    <li>Configured Jenkins pipelines to automate build processes, reducing manual deployment overhead.</li>
+    <li>Managed dependency updates using Maven to ensure compliance with internal security standards.</li>
   </ul>
   <div class="word-boxes-container">
-    <span class="word-box">Rust</span>
-    <span class="word-box">Version Control</span>
+    <span class="word-box">Java</span>
+    <span class="word-box">Jenkins</span>
+    <span class="word-box">Maven</span>
   </div>
 </div>
-<div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; font-weight: bold">
-    <div><img src="https://www.pngarts.com/files/8/Github-Logo-Transparent-Background-PNG.png" alt="icon" style="height: 1em; vertical-align: middle;"><a href="https://github.com/rsomonte/filetype-cli">Filetype CLI</a></div>
-    <div><p style="text-align: right">June 2025</p></div>
-  </div>
-  <ul>
-    <li>Developed a cross-platform CLI tool in Rust for rapid file type identification.</li>
-    <li>Integrated directly with filetype-core for consistent logic across CLI and WebAssembly interfaces.</li>
-  </ul>
-  <div class="word-boxes-container">
-    <span class="word-box">Rust</span>
-    <span class="word-box">Version Control</span>
-  </div>
-</div>
-
-
-
-
 
 ## <u>Education</u>
 
@@ -126,7 +104,7 @@ sembly. Seeking a developer position to contribute to building efficient and sec
 
 <div style="display: grid; grid-template-columns: 1fr 5fr; gap: 20px">
   <div>
-    <p style="text-align: right">2023 - Present</p></div>
+    <p style="text-align: right">2025 - Present</p></div>
   <div>
     <p>Bachelor’s Degree in Computer Science, University of Maryland Global Campus</p></div>
 </div>
