@@ -3,128 +3,136 @@ layout: layout.html
 title: "Curriculum Vitae | rsomonte's website"
 ---
 
-<h1 style="text-align: center;">Rodrigo de Diego de Somonte</h1>
-<h2 style="text-align: center;">Cybersecurity Specialist | Software Developer</h2>
-<h3 style="text-align: center;">✉ <a href="mailto:rodrigodsc@protonmail.ch">rodrigodsc@protonmail.ch</a> | <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Flinked-in-icon-black-and-white%2Flinked-in-icon-black-and-white-2.jpg&f=1&nofb=1&ipt=9de377bdf71b57f841ffefc9f50d2459eee121d1db396eeda25c7e78a2957ab1" alt="icon" style="height: 1em; vertical-align: middle;"> <a href="https://www.linkedin.com/in/rsomonte/">rsomonte</a></h3>
-
-## <u>Profile</u>
-
-
-Cybersecurity focused Software Engineer with professional experience in enterprise application development and secure system design. Currently developing high integrity solutions using Python and React at GMV, following a successful tenure at Thales optimizing Java systems and CI/CD pipelines. I hold a Bachelor of Science in Cybersecurity and am pursuing a second degree in Computer Science, maintaining a 3.9 GPA alongside CompTIA A+, Security+, and Linux+ certifications. I am dedicated to building scalable, secure, and efficient software.
-
-<div class="cvcolumn" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-  <div class="cvbox" style="padding: 15px; border-radius: 10px;">
-    <h2><u>Skills</u></h2>
-    <ul>
-    <li>Programming/Scripting:
-    Java, Python, JavaScript, PHP, SQL, Bash</li>
-    <li>Virtualization: VMware,
-    VirtualBox</li>
-    <li>Operating Systems: Android, ChromeOS, Linux, Windows 10/11
-    </li>
-    <li>Development Tools: VS Code, JetBrains Suite</li>
-    </li>
-    </ul>
+<section class="resume-hero">
+  <p class="resume-label">Curriculum Vitae</p>
+  <h1 class="resume-name">Rodrigo de Diego de Somonte</h1>
+  <p class="resume-summary">Cybersecurity Specialist | Software Developer</p>
+  <div class="contact-row">
+    <span class="contact-chip">✉ <a href="mailto:rodrigodsc@protonmail.ch">rodrigodsc@protonmail.ch</a></span>
+    <span class="contact-chip"><a href="https://www.linkedin.com/in/rsomonte/">LinkedIn / rsomonte</a></span>
   </div>
-  <div class="cvbox" style="padding: 15px; border-radius: 10px;">
-    <h2><u>Languages</u></h2>
-    <ul>
-      <li><span class="language-name">Spanish</span> <span>⬤⬤⬤⬤⬤</span></li>
-      <li><span class="language-name">English</span> <span>⬤⬤⬤⬤⬤</span></li>
-      <li><span class="language-name">Italian</span> <span>⬤⬤⬤⬤〇</span></li>
-      <li><span class="language-name">Portuguese</span> <span>⬤⬤⬤〇〇</span></li>
-      <li><span class="language-name">German</span> <span>⬤⬤〇〇〇</span></li>
-      <li><span class="language-name">French</span> <span>⬤〇〇〇〇</span></li>
-    </ul>
+</section>
+
+<article class="resume-card" style="margin-bottom: 4rem;">
+  <p class="section-label">Profile</p>
+  <p>Cybersecurity focused software engineer with professional experience in enterprise application development and secure system design. I build high-integrity solutions with Python and React, after a successful tenure at Thales optimizing Java systems and CI/CD pipelines. I hold a Bachelor of Science in Cybersecurity and am pursuing a second degree in Computer Science, alongside CompTIA A+, Security+, and Linux+ certifications.</p>
+</article>
+
+<section class="resume-section">
+  <div class="resume-section-header">
+    <p class="resume-label">Work Experience</p>
   </div>
-</div>
 
-## <u>Work Experience</u>
-<div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; font-weight: bold">
-    <div>Software Engineer | GMV</div>
-    <div><p style="text-align: right">Dec 2025 - Present</p></div>
+  <div class="timeline">
+    <article class="timeline-item">
+      <div class="timeline-head">
+        <p class="timeline-role">Software Engineer | GMV</p>
+        <span class="timeline-date">Dec 2025 - Present</span>
+      </div>
+      <div class="timeline-body">
+        <ul class="timeline-list">
+          <li>Develop and maintain security tooling for regulated, critical infrastructure environments under strict confidentiality requirements.</li>
+          <li>Engineered an automated data processing tool utilizing Pandas and Polars, reducing manual processing time from multiple hours to under 5 minutes.</li>
+          <li>Build and maintain user interfaces using React, ensuring integration with Python backend services.</li>
+          <li>Write secure, maintainable code following strict internal security guidelines and version control practices.</li>
+        </ul>
+        <div class="timeline-tags">
+          <span class="tag-pill">FastAPI</span>
+          <span class="tag-pill">Flask</span>
+          <span class="tag-pill">Pandas</span>
+          <span class="tag-pill">Polars</span>
+          <span class="tag-pill">React</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="timeline-item">
+      <div class="timeline-head">
+        <p class="timeline-role">QA Tester (Contract) | Registrap</p>
+        <span class="timeline-date">Oct 2025 - Present</span>
+      </div>
+      <div class="timeline-body">
+        <ul class="timeline-list">
+          <li>Execute ad-hoc beta testing cycles for new feature releases, adapting to dynamic development schedules.</li>
+          <li>Identify and document critical edge-case bugs via GitHub to prevent deployment failures.</li>
+          <li>Verify UI and UX consistency across different environments during pre-release sprints.</li>
+        </ul>
+        <div class="timeline-tags">
+          <span class="tag-pill">GitHub</span>
+          <span class="tag-pill">Beta Testing</span>
+          <span class="tag-pill">Quality Assurance</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="timeline-item">
+      <div class="timeline-head">
+        <p class="timeline-role">Software Developer Intern | Thales</p>
+        <span class="timeline-date">Oct 2025 - Nov 2025</span>
+      </div>
+      <div class="timeline-body">
+        <ul class="timeline-list">
+          <li>Assisted in the optimization of enterprise Java/JSP applications within a strict one-month project scope.</li>
+          <li>Configured Jenkins pipelines to automate build processes, reducing manual deployment overhead.</li>
+          <li>Managed dependency updates using Maven to ensure compliance with internal security standards.</li>
+        </ul>
+        <div class="timeline-tags">
+          <span class="tag-pill">Java</span>
+          <span class="tag-pill">Jenkins</span>
+          <span class="tag-pill">Maven</span>
+        </div>
+      </div>
+    </article>
   </div>
-  <ul>
-    <li>Develop web application backends using FastAPI and Flask to support cybersecurity tools.</li>
-    <li>Implement data manipulation and processing logic using Pandas for internal datasets.</li>
-    <li>Build and maintain user interfaces using React, ensuring integration with Python backend services.</li>
-    <li>Write secure, maintainable code following strict internal security guidelines and version control practices.</li>
-  </ul>
-  <div class="word-boxes-container">
-    <span class="word-box">FastAPI</span>
-    <span class="word-box">Flask</span>
-    <span class="word-box">Pandas</span>
-    <span class="word-box">React</span>
-  </div>
-</div>
+</section>
 
-<div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; font-weight: bold">
-    <div>QA Tester (Contract) | Registrap</div>
-    <div><p style="text-align: right">Oct 2025 - Present</p></div>
-  </div>
-  <ul>
-    <li>Execute ad-hoc beta testing cycles for new feature releases, adapting to dynamic development schedules.</li>
-    <li>Identify and document critical edge-case bugs via GitHub to prevent deployment failures.</li>
-    <li>Verify UI/UX consistency across different environments during pre-release sprints.</li>
-  </ul>
-  <div class="word-boxes-container">
-    <span class="word-box">GitHub</span>
-    <span class="word-box">Beta Testing</span>
-    <span class="word-box">Quality Assurance</span>
-  </div>
-</div>
+<section class="resume-grid" style="margin-top: 4rem;">
+  <article class="resume-card" style="grid-column: 1 / -1;">
+    <p class="section-label">Skills</p>
+    <div class="chip-row">
+      <span class="tag-pill">Java</span>
+      <span class="tag-pill">Python</span>
+      <span class="tag-pill">JavaScript</span>
+      <span class="tag-pill">PHP</span>
+      <span class="tag-pill">SQL</span>
+      <span class="tag-pill">Bash</span>
+      <span class="tag-pill">VMware</span>
+      <span class="tag-pill">VirtualBox</span>
+      <span class="tag-pill">VS Code</span>
+      <span class="tag-pill">JetBrains Suite</span>
+    </div>
+  </article>
 
-<div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; font-weight: bold">
-    <div>Software Developer Intern | Thales</div>
-    <div><p style="text-align: right">Oct 2025 - Nov 2025</p></div>
-  </div>
-  <ul>
-    <li>Assisted in the optimization of enterprise Java/JSP applications within a strict one-month project scope.</li>
-    <li>Configured Jenkins pipelines to automate build processes, reducing manual deployment overhead.</li>
-    <li>Managed dependency updates using Maven to ensure compliance with internal security standards.</li>
-  </ul>
-  <div class="word-boxes-container">
-    <span class="word-box">Java</span>
-    <span class="word-box">Jenkins</span>
-    <span class="word-box">Maven</span>
-  </div>
-</div>
+  <article class="resume-card" style="grid-column: 1 / -1;">
+    <p class="section-label">Languages</p>
+    <div class="timeline" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+      <div class="timeline-item"><div class="timeline-head"><p class="timeline-title">Spanish</p></div><p class="resume-caption">C2</p></div>
+      <div class="timeline-item"><div class="timeline-head"><p class="timeline-title">English</p></div><p class="resume-caption">C2</p></div>
+      <div class="timeline-item"><div class="timeline-head"><p class="timeline-title">Italian</p></div><p class="resume-caption">B2</p></div>
+      <div class="timeline-item"><div class="timeline-head"><p class="timeline-title">Portuguese</p></div><p class="resume-caption">B2</p></div>
+      <div class="timeline-item"><div class="timeline-head"><p class="timeline-title">German</p></div><p class="resume-caption">B1</p></div>
+      <div class="timeline-item"><div class="timeline-head"><p class="timeline-title">French</p></div><p class="resume-caption">A2</p></div>
+    </div>
+  </article>
 
-## <u>Education</u>
-
-<div style="display: grid; grid-template-columns: 1fr 5fr; gap: 20px">
-  <div>
-    <p style="text-align: right">2023 - 2025</p></div>
-  <div>
-    <p>Bachelor’s Degree in Cybersecurity Technology, University of Maryland Global Campus</p></div>
-</div>
-
-<div style="display: grid; grid-template-columns: 1fr 5fr; gap: 20px">
-  <div>
-    <p style="text-align: right">2025 - Present</p></div>
-  <div>
-    <p>Bachelor’s Degree in Computer Science, University of Maryland Global Campus</p></div>
-</div>
-
-<div style="display: grid; grid-template-columns: 1fr 5fr; gap: 20px">
-  <div>
-    <p style="text-align: right">Jul 2024</p></div>
-  <div>
-    <p>CompTIA A+ Certification</p></div>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 5fr; gap: 20px">
-  <div>
-    <p style="text-align: right">Sep 2024</p></div>
-  <div>
-    <p>CompTIA Security+ Certification</p></div>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 5fr; gap: 20px">
-  <div>
-    <p style="text-align: right">Mar 2025</p></div>
-  <div>
-    <p>CompTIA Linux+ Certification</p></div>
-</div>
-
+  <article class="resume-card" style="grid-column: 1 / -1;">
+    <p class="section-label">Education</p>
+    <div class="timeline" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+      <div class="timeline-item">
+        <div class="timeline-head"><p class="timeline-title">Bachelor&rsquo;s Degree in Cybersecurity Technology, University of Maryland Global Campus</p><span class="timeline-date">2023 - 2025</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-head"><p class="timeline-title">Bachelor&rsquo;s Degree in Computer Science, University of Maryland Global Campus</p><span class="timeline-date">2025 - 2026</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-head"><p class="timeline-title">CompTIA A+ Certification</p><span class="timeline-date">Jul 2024</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-head"><p class="timeline-title">CompTIA Security+ Certification</p><span class="timeline-date">Sep 2024</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-head"><p class="timeline-title">CompTIA Linux+ Certification</p><span class="timeline-date">Mar 2025</span></div>
+      </div>
+    </div>
+  </article>
+</section>

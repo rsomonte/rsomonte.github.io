@@ -9,35 +9,37 @@
 </head>
 <body>
     <header>
-        <a href="/" class="home-link">rsomonte&#39;s website</a>
-        <nav>
-            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
-            <ul class="nav">
-                <li class="nav-item"><a href="/">Home</a></li>
-                <li class="nav-item"><a href="/posts/">Blog</a></li>
-                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
-                <li class="nav-item"><a href="/tools/">Tools</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <a href="/" class="home-link">rsomonte&#39;s website</a>
+            <nav aria-labelledby="top-level-navigation-menu">
+                <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                    <li class="nav-item"><a href="/tools/">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main style="max-width: 100%; color: black">
-        <!-- Page-specific content goes here -->
+
+    <main class="canvas-shell">
         {{ content }}
     </main>
+
     <footer>
-        <hr>
-        <div class="footer-content">
+        <div class="footer-inner">
             <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
             <div class="social-icons">
-                <a href="https://www.github.com/rsomonte">
-                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub icon" style="height:3em; vertical-align: middle;">
+                <a href="https://www.github.com/rsomonte" aria-label="GitHub profile">
+                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub">
                 </a>
-                <a href="https://www.linkedin.com/in/rodrigo-de-diego-de-somonte/">
-                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn icon" style="height: 2em; vertical-align: middle;">
+                <a href="https://www.linkedin.com/in/rodrigo-de-diego-de-somonte/" aria-label="LinkedIn profile">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn">
                 </a>
             </div>
         </div>
-        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
+        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
     </footer>
 </body>
 </html>

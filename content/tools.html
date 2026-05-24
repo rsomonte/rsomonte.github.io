@@ -4,11 +4,25 @@ title: "Tools"
 permalink: "/tools/"
 ---
 
-<p>Here you will find a list of tools I've developed using different technologies such as Wasm:</p>
+<section class="page-intro">
+  <p class="eyebrow">Tools</p>
+  <h1 class="page-title">Small utilities with a practical bend.</h1>
+  <p class="page-lead">A collection of tools built with different stacks, including WebAssembly, for quick tasks and experiments.</p>
+</section>
+
 {% assign tools = collections.tools %}
-{% for tool in tools %}
-  <h2><a href="{{ tool.url }}">{{ tool.data.title | default: tool.fileSlug }}</a></h2>
-    {% if tool.data.description %}
-      <p>{{ tool.data.description }}</p>
-    {% endif %}
-{% endfor %}
+<section class="section-block">
+  <div class="card-grid">
+    {% for tool in tools %}
+      <article class="tool-card">
+        <h2><a href="{{ tool.url }}">{{ tool.data.title | default: tool.fileSlug }}</a></h2>
+        {% if tool.data.description %}
+          <p>{{ tool.data.description }}</p>
+        {% else %}
+          <p>A compact utility for everyday use.</p>
+        {% endif %}
+        <p><a class="button-link" href="{{ tool.url }}">Open tool</a></p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
