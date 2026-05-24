@@ -9,31 +9,31 @@
 </head>
 <body>
     <header>
-        <a href="/" class="home-link">rsomonte&#39;s website</a>
-        <nav>
-            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
-            <ul class="nav">
-                <li class="nav-item"><a href="/">Home</a></li>
-                <li class="nav-item"><a href="/posts/">Blog</a></li>
-                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
-                <li class="nav-item"><a href="/tools/">Tools</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <a href="/" class="home-link">rsomonte&#39;s website</a>
+            <nav aria-labelledby="top-level-navigation-menu">
+                <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                    <li class="nav-item"><a href="/tools/">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <!-- Page-specific content goes here -->
-        <head><link href="https://fonts.googleapis.com/css2?family=Libre+Clarendon:wght@700&display=swap" rel="stylesheet"></head> <!-- Don't quite remember why this is here xd -->
 
-<div class="post-title-container">
-    <h1><u>An Update on TaskerBot's Hosting</u></h1>
+    <main>
+        <div class="post-title-container">
+    <h1>An Update on TaskerBot's Hosting</h1>
     <button id="contrast-toggle" class="contrast-toggle-btn" aria-label="Toggle high contrast mode" title="Toggle high contrast text">
         <span class="contrast-label">High Contrast</span>
     </button>
 </div>
 
 <!-- This shows the date and tags -->
-<p class="post-date" style="margin-bottom: 0.2em; margin-top: -1em;">Published on: September 03, 2025</p>
-<p class="post-tags" style="margin-top: 0.2em;">
+<p class="post-date">Published on: September 03, 2025</p>
+<p class="post-tags">
     Tags: 
     
     
@@ -72,13 +72,13 @@
 
     <div class="links-nextprev-previous">
         
-            <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Previous post</p>
+            <p>Previous post</p>
             <a href="/posts/dev.update.11.25/">&larr; Dev-Update | November 2025</a>
         
     </div>
     <div class="links-nextprev-next">
         
-            <p style="font-style: italic; margin-bottom: 0.2em; margin-top: 0;">Next post</p>
+            <p>Next post</p>
             <a href="/posts/taskerbot/">How I built Taskerbot &rarr;</a>
         
     </div>
@@ -134,16 +134,16 @@
     })();
 </script>
     </main>
+
     <footer>
-        <hr>
-        <div class="footer-content">
+        <div class="footer-inner">
             <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
             <div class="social-icons">
-                <a href="https://www.github.com/rsomonte">
-                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub icon" style="height:3em; vertical-align: middle;">
+                <a href="https://www.github.com/rsomonte" aria-label="GitHub profile">
+                    <img src="https://avatars.githubusercontent.com/u/93784371?v=4" alt="GitHub">
                 </a>
-                <a href="https://www.linkedin.com/in/rsomonte/">
-                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn icon" style="height: 2em; vertical-align: middle;">
+                <a href="https://www.linkedin.com/in/rsomonte/" aria-label="LinkedIn profile">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn">
                 </a>
             </div>
         </div>

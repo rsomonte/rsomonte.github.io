@@ -9,48 +9,50 @@
 </head>
 <body>
     <header>
-        <a href="/" class="home-link">rsomonte&#39;s website</a>
-        <nav>
-            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
-            <ul class="nav">
-                <li class="nav-item"><a href="/">Home</a></li>
-                <li class="nav-item"><a href="/posts/">Blog</a></li>
-                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
-                <li class="nav-item"><a href="/tools/">Tools</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <a href="/" class="home-link">rsomonte&#39;s website</a>
+            <nav aria-labelledby="top-level-navigation-menu">
+                <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                    <li class="nav-item"><a href="/tools/">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <!-- Page-specific content goes here -->
-        <h1>Welcome to <u>Home</u></h1>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-    <div>
-        <p>I&#39;m a 20 year old Cybersecurity graduate.
-        I&#39;m studying at UMGC, pursuing a second major in Computer Science.
-        In my free time I enjoy:</p>
-        <ul>
-        <li>learning about new tech</li>
-        <li>tinkering devices and OS</li>
-        <li>practice judo</li>
-        <li>playing videogames</li>
-        </ul>
-        <p>If you want to learn what I&#39;m up to, check my <a href="/posts">blog</a>.</p>
-    </div>
-    <div>
-        <img src="https://i.imgur.com/gNXtDhM.jpeg" alt="no alt">
-</div>
+        <section class="hero-grid">
+    <aside class="hero-aside">
+        <figure class="portrait-card">
+            <img src="https://i.imgur.com/gNXtDhM.jpeg" alt="Portrait of Rodrigo de Diego de Somonte" loading="lazy">
+        </figure>
+
+        <div class="content-card">
+            <p class="eyebrow">Who I am</p>
+            <p>I&rsquo;m a UMGC Cybersecurity and Computer Science graduate, and I&rsquo;m <script>document.write(/\d{4}/.exec(Date())[0]-2005)</script> years old. I like learning new tech, tinkering with devices and operating systems, practicing judo, and playing videogames. This site is where I keep notes, projects, and updates. The blog is where I write most often. The tools page has small utilities I&rsquo;ve built.</p>
+            <div class="hero-actions">
+                <a class="button-link primary" href="/posts/">Read the blog</a>
+                <a class="button-link" href="/tools/">See tools</a>
+            </div>
+        </div>
+    </aside>
+</section>
+
 
     </main>
+
     <footer>
-        <hr>
-        <div class="footer-content">
+        <div class="footer-inner">
             <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
             <div class="social-icons">
-                <a href="https://www.github.com/rsomonte">
-                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub icon" style="height:3em; vertical-align: middle;">
+                <a href="https://www.github.com/rsomonte" aria-label="GitHub profile">
+                    <img src="https://avatars.githubusercontent.com/u/93784371?v=4" alt="GitHub">
                 </a>
-                <a href="https://www.linkedin.com/in/rsomonte/">
-                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn icon" style="height: 2em; vertical-align: middle;">
+                <a href="https://www.linkedin.com/in/rsomonte/" aria-label="LinkedIn profile">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn">
                 </a>
             </div>
         </div>

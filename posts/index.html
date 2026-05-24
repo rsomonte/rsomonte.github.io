@@ -9,79 +9,201 @@
 </head>
 <body>
     <header>
-        <a href="/" class="home-link">rsomonte&#39;s website</a>
-        <nav>
-            <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
-            <ul class="nav">
-                <li class="nav-item"><a href="/">Home</a></li>
-                <li class="nav-item"><a href="/posts/">Blog</a></li>
-                <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
-                <li class="nav-item"><a href="/tools/">Tools</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <a href="/" class="home-link">rsomonte&#39;s website</a>
+            <nav aria-labelledby="top-level-navigation-menu">
+                <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                    <li class="nav-item"><a href="/tools/">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <!-- Page-specific content goes here -->
-        <h1>Welcome to <u>Blog</u></h1>
-<p>Here you can check any <a href="/tags" class="post-tags">tags</a>.</p>
+        <section class="page-intro">
+  <p class="eyebrow">Blog</p>
+  <h1 class="page-title">Notes, updates, and occasional deep dives.</h1>
+  <p class="page-lead">Here you can browse the latest posts and jump into topics by <a href="/tags/">tag</a>.</p>
+</section>
 
-
-  <h2><a href="/posts/dev.update.12.25/">Dev-Update | December 2025</a></h2>
-  <p class="post-date">Published on: December 31, 2025</p>
-  <p>This last month of the year has been quite interesting. Today I want to share a little bit of it, my reflections on 2025, and my plans for 2026.
+<section class="section-block">
+  <div class="card-grid">
+    
+      <article class="post-card">
+        <p class="post-date-pill">December 31, 2025</p>
+        <h2><a href="/posts/dev.update.12.25/">Dev-Update | December 2025</a></h2>
+        <p>This last month of the year has been quite interesting. Today I want to share a little bit of it, my reflections on 2025, and my plans for 2026.
 
 </p>
-
-  <h2><a href="/posts/dev.update.11.25/">Dev-Update | November 2025</a></h2>
-  <p class="post-date">Published on: November 09, 2025</p>
-  <p>A quick progress update from the past few months: I have been setting up a small self-hosting environment, learning Docker and Kubernetes, building a few small tools, and helping a friend with QA. Below are the highlights with inline links to the projects mentioned.
+        <div class="tag-row">
+          
+            
+          
+            
+              <a class="tag-pill" href="/tags/dev update/">dev update</a>
+            
+          
+        </div>
+        <p><a class="button-link" href="/posts/dev.update.12.25/">Read post</a></p>
+      </article>
+    
+      <article class="post-card">
+        <p class="post-date-pill">November 09, 2025</p>
+        <h2><a href="/posts/dev.update.11.25/">Dev-Update | November 2025</a></h2>
+        <p>A quick progress update from the past few months: I have been setting up a small self-hosting environment, learning Docker and Kubernetes, building a few small tools, and helping a friend with QA. Below are the highlights with inline links to the projects mentioned.
 
 </p>
-
-  <h2><a href="/posts/bot_hosting/">An Update on TaskerBot's Hosting</a></h2>
-  <p class="post-date">Published on: September 03, 2025</p>
-  <p>
+        <div class="tag-row">
+          
+            
+          
+            
+              <a class="tag-pill" href="/tags/discord/">discord</a>
+            
+          
+            
+              <a class="tag-pill" href="/tags/docker/">docker</a>
+            
+          
+            
+              <a class="tag-pill" href="/tags/hosting/">hosting</a>
+            
+          
+            
+              <a class="tag-pill" href="/tags/dev update/">dev update</a>
+            
+          
+        </div>
+        <p><a class="button-link" href="/posts/dev.update.11.25/">Read post</a></p>
+      </article>
+    
+      <article class="post-card">
+        <p class="post-date-pill">September 03, 2025</p>
+        <h2><a href="/posts/bot_hosting/">An Update on TaskerBot's Hosting</a></h2>
+        <p>
 Finding a good host for TaskerBot turned out to be harder than I thought. After a few failed tries with other services, I've landed on a temporary solution: running it on my own machine with Docker.
 </p>
-
-  <h2><a href="/posts/taskerbot/">How I built Taskerbot</a></h2>
-  <p class="post-date">Published on: June 27, 2025</p>
-  <p>
+        <div class="tag-row">
+          
+            
+          
+            
+              <a class="tag-pill" href="/tags/discord/">discord</a>
+            
+          
+            
+              <a class="tag-pill" href="/tags/docker/">docker</a>
+            
+          
+            
+              <a class="tag-pill" href="/tags/hosting/">hosting</a>
+            
+          
+        </div>
+        <p><a class="button-link" href="/posts/bot_hosting/">Read post</a></p>
+      </article>
+    
+      <article class="post-card">
+        <p class="post-date-pill">June 27, 2025</p>
+        <h2><a href="/posts/taskerbot/">How I built Taskerbot</a></h2>
+        <p>
 Developing my latest project, a Discord bot called [Taskerbot](https://github.com/rsomonte/taskerbot), has been an interesting journey full of unexpected turns. The inspiration came from a bot I saw during an event on a Discord server that gamified tasks, and I decided to build my own version. This project quickly evolved into a valuable lesson in modern bot development, especially after a five-year hiatus from the Discord API.
 </p>
-
-  <h2><a href="/posts/languages/">Report on Language Learning Resources</a></h2>
-  <p class="post-date">Published on: June 23, 2025</p>
-  <p>Over years of studying languages, I've tested a wide array of learning tools. This report shares my personal experiences and ratings for each, from apps to websites, to help you choose the right one for your journey.
+        <div class="tag-row">
+          
+            
+          
+            
+              <a class="tag-pill" href="/tags/discord/">discord</a>
+            
+          
+        </div>
+        <p><a class="button-link" href="/posts/taskerbot/">Read post</a></p>
+      </article>
+    
+      <article class="post-card">
+        <p class="post-date-pill">June 23, 2025</p>
+        <h2><a href="/posts/languages/">Report on Language Learning Resources</a></h2>
+        <p>Over years of studying languages, I've tested a wide array of learning tools. This report shares my personal experiences and ratings for each, from apps to websites, to help you choose the right one for your journey.
 </p>
-
-  <h2><a href="/posts/post2/">I hate deployment, don't even mention it</a></h2>
-  <p class="post-date">Published on: May 26, 2025</p>
-  <p>Seems like I’m not getting anything right on the first try. In this edition of *Dev Odysseys*, I’ll share the rollercoaster of deploying my website—complete with rage-quits, AI rescues, and GitHub Pages chaos.  
+        <div class="tag-row">
+          
+            
+          
+            
+              <a class="tag-pill" href="/tags/languages/">languages</a>
+            
+          
+            
+              <a class="tag-pill" href="/tags/resources/">resources</a>
+            
+          
+        </div>
+        <p><a class="button-link" href="/posts/languages/">Read post</a></p>
+      </article>
+    
+      <article class="post-card">
+        <p class="post-date-pill">May 26, 2025</p>
+        <h2><a href="/posts/post2/">I hate deployment, don't even mention it</a></h2>
+        <p>Seems like I’m not getting anything right on the first try. In this edition of *Dev Odysseys*, I’ll share the rollercoaster of deploying my website—complete with rage-quits, AI rescues, and GitHub Pages chaos.  
 </p>
-
-  <h2><a href="/posts/post1/">Building My First Website: Homer's Odyssey</a></h2>
-  <p class="post-date">Published on: May 25, 2025</p>
-  <p>It hasn’t been an easy ride to build this website—especially with my lack of web development experience. But I can confidently say I’ve learned a ton about the tools and technologies powering this site, and I’m here to share the messy journey.  
+        <div class="tag-row">
+          
+            
+          
+            
+              <a class="tag-pill" href="/tags/web dev/">web dev</a>
+            
+          
+            
+              <a class="tag-pill" href="/tags/githhub pages/">githhub pages</a>
+            
+          
+        </div>
+        <p><a class="button-link" href="/posts/post2/">Read post</a></p>
+      </article>
+    
+      <article class="post-card">
+        <p class="post-date-pill">May 25, 2025</p>
+        <h2><a href="/posts/post1/">Building My First Website: Homer's Odyssey</a></h2>
+        <p>It hasn’t been an easy ride to build this website—especially with my lack of web development experience. But I can confidently say I’ve learned a ton about the tools and technologies powering this site, and I’m here to share the messy journey.  
 </p>
+        <div class="tag-row">
+          
+            
+          
+            
+              <a class="tag-pill" href="/tags/web dev/">web dev</a>
+            
+          
+        </div>
+        <p><a class="button-link" href="/posts/post1/">Read post</a></p>
+      </article>
+    
+  </div>
 
+  <nav class="pagination">
+    
+    <span>Page 1 of 1</span>
+    
+  </nav>
+</section>
 
-<nav class="pagination">
-  
-  Page 1 of 1
-  
-</nav>
     </main>
+
     <footer>
-        <hr>
-        <div class="footer-content">
+        <div class="footer-inner">
             <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
             <div class="social-icons">
-                <a href="https://www.github.com/rsomonte">
-                    <img src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg" alt="GitHub icon" style="height:3em; vertical-align: middle;">
+                <a href="https://www.github.com/rsomonte" aria-label="GitHub profile">
+                    <img src="https://avatars.githubusercontent.com/u/93784371?v=4" alt="GitHub">
                 </a>
-                <a href="https://www.linkedin.com/in/rsomonte/">
-                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn icon" style="height: 2em; vertical-align: middle;">
+                <a href="https://www.linkedin.com/in/rsomonte/" aria-label="LinkedIn profile">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn">
                 </a>
             </div>
         </div>
