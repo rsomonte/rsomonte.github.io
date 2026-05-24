@@ -1102,7 +1102,7 @@ html.high-contrast-mode .post-metadata time {
     max-height: none;
   }
   .portrait-card img {
-    object-position: center 15%;
+    object-position: center 60%;
   }
 
   .postlist-item {
