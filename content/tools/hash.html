@@ -12,9 +12,9 @@ description: Generate file hashes in the browser using Rust and WebAssembly.
 <!-- Algorithm checkboxes -->
  <ul>
     <li><input type="checkbox" id="sha1"> SHA-1</li>
-    <li><input type="checkbox" id="sha256"> SHA-256</li>
+    <li><input type="checkbox" id="sha256" checked> SHA-256</li>
     <li><input type="checkbox" id="sha512"> SHA-512</li>
-    <li><input type="checkbox" id="md5"> MD5</li>
+    <li><input type="checkbox" id="md5" checked> MD5</li>
     <li><input type="checkbox" id="blake2b"> BLAKE2b</li>
     <li><input type="checkbox" id="blake2s"> BLAKE2s</li>
     <li><input type="checkbox" id="whirlpool"> Whirlpool</li>
@@ -37,8 +37,17 @@ description: Generate file hashes in the browser using Rust and WebAssembly.
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
     async function run() {
-        await init();
-        fileInput.disabled = false;
+        try {
+            await init();
+            fileInput.disabled = false;
+            if (fileInput.files.length) {
+                calculateBtn.disabled = false;
+            }
+        } catch (err) {
+            console.error("Failed to load Hasher WebAssembly module:", err);
+            resultsOutput.innerHTML = `<p style="color: #ff6b6b;">Error: Failed to load WebAssembly module (${err.message})</p>`;
+            return;
+        }
         
         // Enable/disable calculate button based on file selection
         fileInput.addEventListener('change', () => {
@@ -68,6 +77,8 @@ description: Generate file hashes in the browser using Rust and WebAssembly.
 
             // Add size validation after algorithm check
             const file = fileInput.files[0];
+            if (!file) return;
+
             const MAX_FILE_SIZE = 1.5 * 1024 * 1024 * 1024; // 1.5GB limit
             /*
             This limit is required because of the limits of the WebAssembly memory and the browser's FileReader API.
@@ -82,20 +93,30 @@ description: Generate file hashes in the browser using Rust and WebAssembly.
                 return;
             }
 
+            resultsOutput.innerHTML = '<p>Calculating hashes...</p>';
+
             const reader = new FileReader();
 
             reader.onload = async function(e) {
-                const arrayBuffer = e.target.result;
-                const bytes = new Uint8Array(arrayBuffer);
-                
-                // Get selected algorithms
-                const selectedAlgorithms = Array.from(checkboxes)
-                    .filter(cb => cb.checked)
-                    .map(cb => cb.id)
-                    .join(' ');
+                try {
+                    const arrayBuffer = e.target.result;
+                    const bytes = new Uint8Array(arrayBuffer);
+                    
+                    // Get selected algorithms
+                    const selectedAlgorithms = Array.from(checkboxes)
+                        .filter(cb => cb.checked)
+                        .map(cb => cb.id)
+                        .join(' ');
 
-                const results = hasher_results(bytes, selectedAlgorithms);
-                displayResults(results);
+                    const results = hasher_results(bytes, selectedAlgorithms);
+                    displayResults(results);
+                } catch (err) {
+                    resultsOutput.innerHTML = `<p style="color: #ff6b6b;">Error calculating hash: ${err.message}</p>`;
+                }
+            };
+
+            reader.onerror = () => {
+                resultsOutput.innerHTML = `<p style="color: #ff6b6b;">Error reading file: ${file.name}</p>`;
             };
 
             reader.readAsArrayBuffer(file);
@@ -114,16 +135,17 @@ description: Generate file hashes in the browser using Rust and WebAssembly.
 
         // Split results into lines and process each
         results.split('\n').forEach(line => {
-        const [algorithm, ...hashParts] = line.split(' ');
-        const hash = hashParts.join(' ');
-        table += `
-            <tr>
-                <td style="padding: 8px; border: 1px solid #ddd;">${algorithm}</td>
-                <td style="padding: 8px; border: 1px solid #ddd; font-family: monospace; 
-                    word-wrap: break-word; word-break: break-all;">${hash}</td>
-            </tr>
-        `;
-    });
+            if (!line.trim()) return;
+            const [algorithm, ...hashParts] = line.split(' ');
+            const hash = hashParts.join(' ');
+            table += `
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">${algorithm}</td>
+                    <td style="padding: 8px; border: 1px solid #ddd; font-family: monospace; 
+                        word-wrap: break-word; word-break: break-all;">${hash}</td>
+                </tr>
+            `;
+        });
 
         table += '</table>';
         

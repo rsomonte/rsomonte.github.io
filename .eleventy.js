@@ -85,6 +85,9 @@ module.exports = async function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({
         "content/tools/room.js": "tools/roomcanvas/room.js"
     });
+    eleventyConfig.addPassthroughCopy({
+        "content/pkg": "pkg"
+    });
 
     eleventyConfig.setFrontMatterParsingOptions({
         excerpt: true,
