@@ -3,7 +3,7 @@
     "@11ty/eleventy": "^3.1.0"
   },
   "devDependencies": {
-    "wasm-pack": "^0.13.1"
+    "wasm-pack": "^0.15.0"
   },
   "scripts": {
     "build:wasm": "wasm-pack build ./ufile_wasm --target web --out-dir ../docs/pkg && wasm-pack build ./hasher_wasm --target web --out-dir ../docs/pkg",

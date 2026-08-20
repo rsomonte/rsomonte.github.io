@@ -490,6 +490,7 @@ footer {
 .content-card,
 .tool-card,
 .post-card,
+.guide-card,
 .resume-card,
 .page-intro,
 .portrait-card,
@@ -509,6 +510,7 @@ footer {
 .content-card:hover,
 .tool-card:hover,
 .post-card:hover,
+.guide-card:hover,
 .postlist-item:hover,
 .timeline-item:hover {
   background: var(--surface-hover);
@@ -645,6 +647,58 @@ footer {
 .tool-card p:last-child {
   margin-top: auto;
   padding-top: 1.5rem;
+}
+
+/* Guide cards */
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.guide-card h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+.guide-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.guide-card p:last-child {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.guide-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0 2.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--glass-surface-2);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-sm);
+  font-size: 0.9rem;
+}
+.guide-repo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--text-muted);
+}
+.guide-repo svg {
+  vertical-align: middle;
+}
+.guide-date {
+  font-family: var(--font-mono);
+  color: var(--text-soft);
+  margin: 0;
+  margin-left: auto;
 }
 
 /* ═══════════════════════════════════════

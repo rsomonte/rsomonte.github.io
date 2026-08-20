@@ -1,0 +1,29 @@
+---
+layout: commonlayout.liquid
+title: "Guides"
+permalink: "/guides/"
+---
+
+<section class="page-intro">
+  <p class="eyebrow">Guides</p>
+  <h1 class="page-title">Walkthroughs, hardware fixes, and setup notes.</h1>
+  <p class="page-lead">A collection of a few guides that I've written to help solve some problems that I've encountered.</p>
+</section>
+
+{% assign guides = collections.guides %}
+<section class="section-block">
+  <div class="card-grid">
+    {% for guide in guides %}
+      <article class="guide-card">
+        {% if guide.data.date %}
+          <p class="post-date-pill">{{ guide.data.date | date: "%B %d, %Y" }}</p>
+        {% endif %}
+        <h2><a href="{{ guide.url }}">{{ guide.data.title | default: guide.fileSlug }}</a></h2>
+        {% if guide.data.description %}
+          <p>{{ guide.data.description }}</p>
+        {% endif %}
+        <p><a class="button-link" href="{{ guide.url }}">Read guide &rarr;</a></p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
