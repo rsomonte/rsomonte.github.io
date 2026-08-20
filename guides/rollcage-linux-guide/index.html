@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollcage Linux Guide</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="home-link">rsomonte&#39;s website</a>
+            <nav aria-labelledby="top-level-navigation-menu">
+                <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/guides/">Guides</a></li>
+                    <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                    <li class="nav-item"><a href="/tools/">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article class="guide-container">
+    <div class="post-title-container">
+        <h1>Rollcage Linux Guide</h1>
+        <button id="contrast-toggle" class="contrast-toggle-btn" aria-label="Toggle high contrast mode" title="Toggle high contrast text">
+            <span class="contrast-label">High Contrast</span>
+        </button>
+    </div>
+
+    <div class="guide-meta-bar">
+        
+        <p class="guide-repo">
+            <svg class="github-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+            Source Repository: <a href="https://github.com/rsomonte/rollcage_linux_guide" target="_blank" rel="noopener noreferrer">rsomonte/rollcage_linux_guide</a>
+        </p>
+        
+        
+    </div>
+
+    <div class="guide-content">
+        <p>This guide walks through setting up <strong>Rollcage Redux</strong> (the modern source-patched version of the 1999 combat racing game) on Linux (Fedora/Ubuntu/Arch) using Wine and Lutris, as well as getting Xbox and generic controllers working smoothly.</p>
+<hr>
+<h2>1. System Dependencies &amp; Controller Permissions</h2>
+<h3>Install Required System Packages</h3>
+<p>Rollcage Redux requires resolution switching support (<code>xrandr</code>) and Vulkan tools:</p>
+<ul>
+<li><strong>Fedora</strong>:<pre><code class="language-bash">sudo dnf install -y xrandr vulkan-tools xdotool
+</code></pre>
+</li>
+<li><strong>Ubuntu / Debian</strong>:<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install -y x11-xserver-utils vulkan-tools xdotool
+</code></pre>
+</li>
+<li><strong>Arch Linux</strong>:<pre><code class="language-bash">sudo pacman -S xorg-xrandr vulkan-tools xdotool
+</code></pre>
+</li>
+</ul>
+<h3>Grant Controller Access (udev &amp; Groups)</h3>
+<p>To allow Wine and SDL to read raw Xbox/gamepad event inputs:</p>
+<ol>
+<li>Add your user to the <code>input</code> group:<pre><code class="language-bash">sudo usermod -aG input $USER
+</code></pre>
+</li>
+<li>Create a permanent udev rule for gamepads (<code>/etc/udev/rules.d/99-gamepad.rules</code>):<pre><code class="language-ini">KERNEL==&quot;event*&quot;, SUBSYSTEM==&quot;input&quot;, MODE=&quot;0666&quot;, TAG+=&quot;uaccess&quot;
+KERNEL==&quot;js*&quot;, SUBSYSTEM==&quot;input&quot;, MODE=&quot;0666&quot;, TAG+=&quot;uaccess&quot;
+KERNEL==&quot;hidraw*&quot;, MODE=&quot;0666&quot;, TAG+=&quot;uaccess&quot;
+</code></pre>
+</li>
+<li>Reload udev rules:<pre><code class="language-bash">sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger
+</code></pre>
+</li>
+</ol>
+<hr>
+<h2>2. Fixing the Crash After Intro Logos (<code>vcrun2013</code>)</h2>
+<h3>Root Cause</h3>
+<p>When transitioning from the video logos (<code>Psygnosis.bik</code> &amp; <code>Atd.bik</code>) into the main 3D engine, <strong>Rollcage Redux</strong> uses Visual C++ 2013 Concurrency runtime functions (<code>msvcr120.dll</code>). Wine's built-in stub causes the game to abort immediately after the intro logos.</p>
+<h3>Fix via Winetricks</h3>
+<p>Install native 32-bit <code>vcrun2013</code> inside your game's Wine prefix:</p>
+<pre><code class="language-bash">WINEPREFIX=&quot;$HOME/Games/rollcage&quot; winetricks -q vcrun2013
+</code></pre>
+<hr>
+<h2>3. Game Files &amp; Working Directory Setup</h2>
+<ol>
+<li>Place your extracted Rollcage Redux game folder at <code>$HOME/Games/RollcageRedux</code>.</li>
+<li>Ensure the main executable is located under the <code>Direct3D</code> folder:
+<code>$HOME/Games/RollcageRedux/Direct3D/Rollcage Redux.exe</code></li>
+</ol>
+<blockquote>
+<p><strong>Critical Note:</strong> The <strong>Working Directory</strong> must be set to <code>$HOME/Games/RollcageRedux/Direct3D</code> so the executable can locate <code>binkw32.dll</code> and asset indexes.</p>
+</blockquote>
+<hr>
+<h2>4. Lutris Game Configuration</h2>
+<p>Create or update your Lutris configuration (<code>~/.config/lutris/games/rollcage-setup-1785908900.yml</code>):</p>
+<pre><code class="language-yaml">game:
+  exe: /home/$USER/Games/RollcageRedux/Direct3D/Rollcage Redux.exe
+  working_dir: /home/$USER/Games/RollcageRedux/Direct3D
+  prefix: /home/$USER/Games/rollcage
+game_slug: rollcage
+name: Rollcage Redux
+slug: rollcage-setup
+system:
+  env:
+    SDL_JOYSTICK_HIDAPI: '1'
+wine:
+  runner: wine-ge-8-26-x86_64
+</code></pre>
+<h3>Desktop Menu Shortcut (<code>~/.local/share/applications/rollcage-redux.desktop</code>)</h3>
+<pre><code class="language-ini">[Desktop Entry]
+Name=Rollcage Redux
+Comment=Play Rollcage Redux on Linux
+Exec=env WINEPREFIX=&quot;/home/$USER/Games/rollcage&quot; DISPLAY=&quot;:0&quot; SDL_JOYSTICK_HIDAPI=1 /home/$USER/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64/bin/wine &quot;/home/$USER/Games/RollcageRedux/Direct3D/Rollcage Redux.exe&quot;
+Path=/home/$USER/Games/RollcageRedux/Direct3D
+Icon=/home/$USER/.local/share/lutris/banners/rollcage.jpg
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+</code></pre>
+<hr>
+<h2>5. In-Game Controller Setup</h2>
+<ol>
+<li>Launch <strong>Rollcage Redux</strong> (via Lutris or App Launcher).</li>
+<li>On the initial setup dialog, click <strong>Play</strong>.</li>
+<li>In the main menu, navigate to <strong>Options</strong> $\rightarrow$ <strong>Controls</strong> $\rightarrow$ <strong>P1 Controller</strong>.</li>
+<li>Change the selected device to <strong>Xbox One Controller</strong> (or your connected gamepad).</li>
+<li><strong>Redefine Controls</strong>:
+<ul>
+<li>Highlight <strong>Redefine Controls</strong> (or press <strong>Enter</strong> on it).</li>
+<li>Press each corresponding button / stick direction on your gamepad to map actions (Accelerate, Brake, Steer Left/Right, Fire, Use Item).</li>
+</ul>
+</li>
+<li>Save settings and enjoy the game!</li>
+</ol>
+<blockquote>
+<p><strong>Note</strong>: I used <code>A</code> for acceleration and <code>B</code> for braking and reversing, because using the triggers would also allow left stick front and back to work as acceleration and braking respectively</p>
+</blockquote>
+
+    </div>
+
+    <nav class="links-nextprev">
+        <div class="links-nextprev-previous">
+            <a href="/guides/">&larr; Back to Guides</a>
+        </div>
+    </nav>
+</article>
+
+<script>
+    // High Contrast Toggle Functionality
+    (function() {
+        const STORAGE_KEY = 'high-contrast-mode';
+        const CONTRAST_CLASS = 'high-contrast-mode';
+        const button = document.getElementById('contrast-toggle');
+        
+        function loadContrastPreference() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved === 'enabled') {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                updateButtonState(true);
+            }
+        }
+        
+        function updateButtonState(isEnabled) {
+            if (isEnabled) {
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+            } else {
+                button.classList.remove('active');
+                button.setAttribute('aria-pressed', 'false');
+            }
+        }
+        
+        function toggleContrast() {
+            const isCurrentlyEnabled = document.documentElement.classList.contains(CONTRAST_CLASS);
+            if (isCurrentlyEnabled) {
+                document.documentElement.classList.remove(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'disabled');
+                updateButtonState(false);
+            } else {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'enabled');
+                updateButtonState(true);
+            }
+        }
+        
+        if (button) {
+            loadContrastPreference();
+            button.addEventListener('click', toggleContrast);
+            button.setAttribute('aria-pressed', document.documentElement.classList.contains(CONTRAST_CLASS));
+        }
+    })();
+</script>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+            <div class="social-icons">
+                <a href="https://www.github.com/rsomonte" aria-label="GitHub profile">
+                    <img src="https://avatars.githubusercontent.com/u/93784371?v=4" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/rsomonte/" aria-label="LinkedIn profile">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
+    </footer>
+</body>
+</html>

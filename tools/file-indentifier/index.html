@@ -16,6 +16,7 @@
                 <ul class="nav">
                     <li class="nav-item"><a href="/">Home</a></li>
                     <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/guides/">Guides</a></li>
                     <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
                     <li class="nav-item"><a href="/tools/">Tools</a></li>
                 </ul>
@@ -38,11 +39,19 @@
   import init, { identify_file_wasm, identify_multiple_files_wasm } from '/pkg/ufile_wasm.js';
 
   async function main() {
-    // Initialize the Wasm module.
-    await init();
-
     const fileInput = document.getElementById('upload');
     const resultsOutput = document.getElementById('results');
+
+    try {
+      // Initialize the Wasm module.
+      await init();
+    } catch (err) {
+      console.error("Failed to load File Type Identifier WebAssembly module:", err);
+      if (resultsOutput) {
+        resultsOutput.innerHTML = `<span style="color: #ff6b6b;">Error: Failed to load WebAssembly module (${err.message})</span>`;
+      }
+      return;
+    }
 
     fileInput.addEventListener('change', async (event) => {
       const files = event.target.files;
@@ -51,17 +60,21 @@
         return;
       }
 
-      resultsOutput.innerHTML = ''; // Clear previous results
+      resultsOutput.innerHTML = 'Processing file(s)...';
 
       if (files.length === 1) {
-        // Single file - use original function for backward compatibility
+        // Single file
         const file = files[0];
         const reader = new FileReader();
         
         reader.onload = (e) => {
-          const bytes = new Uint8Array(e.target.result);
-          const fileInfo = identify_file_wasm(bytes);
-          resultsOutput.innerHTML = `<table border="1"><tr><th>File Name</th><th>Description</th></tr><tr><td>${file.name}</td><td>${fileInfo}</td></tr></table>`;
+          try {
+            const bytes = new Uint8Array(e.target.result);
+            const fileInfo = identify_file_wasm(bytes);
+            resultsOutput.innerHTML = `<table border="1" style="width:100%;"><tr><th>File Name</th><th>Description</th></tr><tr><td>${file.name}</td><td>${fileInfo}</td></tr></table>`;
+          } catch (err) {
+            resultsOutput.textContent = `Error identifying file "${file.name}": ${err.message}`;
+          }
         };
         
         reader.onerror = () => {
@@ -70,7 +83,7 @@
         
         reader.readAsArrayBuffer(file);
       } else {
-        // Multiple files - use new batch function
+        // Multiple files
         try {
           const fileDataArray = [];
           const fileNames = [];
@@ -89,7 +102,7 @@
           const descriptions = identify_multiple_files_wasm(fileDataArray);
           
           // Format results into a table
-          let tableHTML = '<table border="1"><tr><th>File Name</th><th>Description</th></tr>';
+          let tableHTML = '<table border="1" style="width:100%;"><tr><th>File Name</th><th>Description</th></tr>';
           for (let i = 0; i < fileNames.length; i++) {
             tableHTML += `<tr><td>${fileNames[i]}</td><td>${descriptions[i]}</td></tr>`;
           }

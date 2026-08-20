@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commodore OS Vision Theme Pack for MATE</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="home-link">rsomonte&#39;s website</a>
+            <nav aria-labelledby="top-level-navigation-menu">
+                <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/guides/">Guides</a></li>
+                    <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                    <li class="nav-item"><a href="/tools/">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article class="guide-container">
+    <div class="post-title-container">
+        <h1>Commodore OS Vision Theme Pack for MATE</h1>
+        <button id="contrast-toggle" class="contrast-toggle-btn" aria-label="Toggle high contrast mode" title="Toggle high contrast text">
+            <span class="contrast-label">High Contrast</span>
+        </button>
+    </div>
+
+    <div class="guide-meta-bar">
+        
+        <p class="guide-repo">
+            <svg class="github-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+            Source Repository: <a href="https://github.com/rsomonte/commodore-os-vision-theme" target="_blank" rel="noopener noreferrer">rsomonte/commodore-os-vision-theme</a>
+        </p>
+        
+        
+    </div>
+
+    <div class="guide-content">
+        <h1>Commodore OS Vision Theme Pack for MATE</h1>
+<p>This repository contains the Commodore OS Vision theme, icons, cursors, retro computing fonts, wallpapers, and desktop configs, extracted from Commodore OS Vision 3.1 and packaged for ease of installation on standard Linux distributions running the <strong>MATE Desktop Environment</strong> (tested on Fedora 44 and Debian/Ubuntu).</p>
+<h2>Features</h2>
+<ul>
+<li><strong>GTK Themes</strong>: Includes <code>CommodoreOS</code> (main retro-cyber theme), <code>C64-Esque</code> (Commodore 64 color scheme), and <code>GlassyBleu</code> (the iconic translucent glass border style).</li>
+<li><strong>Icon &amp; Cursor Themes</strong>: Packaged cursor set (<code>CommodoreOSCursors</code>) and custom cybernetic icon pack (<code>CommodoreOSIcons</code>).</li>
+<li><strong>Wallpapers</strong>: A collection of high-resolution retro backgrounds, including the classic space theme, Commodore 64 command prompts, and Amiga Boing Ball designs.</li>
+<li><strong>Retro Fonts</strong>: Includes original typography such as:
+<ul>
+<li><em>Amiga</em>: <code>Amiga-Regular</code></li>
+<li><em>Atari</em>: <code>AtariSmall</code></li>
+<li><em>C64</em>: <code>C64 Pro</code>, <code>Commodore Angled</code>, <code>Commodore Rounded</code></li>
+<li><em>Sci-Fi / Terminals</em>: <code>Orbitron</code> (Black, Bold, Light, Medium), <code>Furore</code>, <code>TerminalVector</code></li>
+</ul>
+</li>
+<li><strong>Pre-configured Layouts</strong>: Automation for <strong>Cairo-Dock</strong> (configured with VIC-20/Amiga style icons), <strong>Conky</strong> system monitors, <strong>Compiz</strong> desktop effects (wobbly windows, desktop cube, skydome), and the <strong>Emerald</strong> window decorator (<code>CommodoreOS</code> and <code>CyberHack</code> themes).
+<img width="1920" height="1080" alt="Screenshot at 2026-07-15 16-25-34" src="https://github.com/user-attachments/assets/511fc517-076b-401c-acb7-450ee470b922" /></li>
+</ul>
+<hr>
+<h2>Installation</h2>
+<h3>Automated Install (Recommended)</h3>
+<p>Clone the repository and run the automated installation script:</p>
+<pre><code class="language-bash">git clone https://github.com/rsomonte/commodore-os-vision-theme.git
+cd commodore-os-vision-theme
+chmod +x install.sh
+./install.sh
+</code></pre>
+<p>The script will automatically:</p>
+<ol>
+<li>Detect your package manager and install dependencies (<code>MATE</code>, <code>Cairo-Dock</code>, <code>Conky</code>, <code>Compiz</code>, <code>Emerald</code>, <code>dconf</code>).</li>
+<li>Install themes and icons system-wide and locally.</li>
+<li>Install the retro fonts and update the font cache.</li>
+<li>Load the MATE desktop layouts, Cairo-Dock configurations, Compiz profiles, Emerald themes, and autostart apps.</li>
+<li>Apply the GTK, cursor, icon, window manager (Compiz), and decorator (Emerald) settings.</li>
+</ol>
+<hr>
+<h2>Manual Installation</h2>
+<p>If you prefer to configure the theme manually:</p>
+<h3>1. Install MATE, Cairo-Dock, Conky, Compiz, and Emerald</h3>
+<ul>
+<li><strong>Fedora</strong>:<pre><code class="language-bash">sudo dnf group install &quot;MATE Desktop&quot;
+sudo dnf install cairo-dock conky dconf compiz compiz-manager ccsm emerald emerald-themes simple-ccsm fusion-icon compiz-plugins-main compiz-plugins-extra compiz-plugins-experimental
+</code></pre>
+</li>
+<li><strong>Ubuntu / Debian</strong>:<pre><code class="language-bash">sudo apt-get install mate-desktop-environment cairo-dock conky-all dconf-cli compiz compiz-boxmenu compizconfig-settings-manager emerald
+</code></pre>
+</li>
+</ul>
+<h3>2. Copy Theme Assets</h3>
+<ul>
+<li>Copy folders inside <code>themes/</code> to <code>~/.themes/</code> (and <code>/usr/share/themes/</code> system-wide).</li>
+<li>Copy folders inside <code>icons/</code> to <code>~/.icons/</code> (and <code>/usr/share/icons/</code> system-wide).</li>
+<li>Copy files inside <code>fonts/</code> to <code>~/.local/share/fonts/</code> and run <code>fc-cache -f</code>.</li>
+<li>Copy images inside <code>wallpapers/</code> to <code>/usr/share/backgrounds/CommodoreOS/</code> (create this folder).</li>
+</ul>
+<h3>3. Load Configurations</h3>
+<ul>
+<li>Copy <code>configs/cairo-dock/</code> to <code>~/.config/cairo-dock/</code>.</li>
+<li>Copy <code>configs/compiz/</code> to <code>~/.config/compiz/</code>.</li>
+<li>Copy <code>configs/.emerald/</code> to <code>~/.emerald/</code>.</li>
+<li>Copy files inside <code>configs/autostart/</code> to <code>~/.config/autostart/</code>.</li>
+<li>Import MATE settings using <code>dconf</code>:<pre><code class="language-bash">dconf load /org/mate/ &lt; configs/mate-settings.dconf
+</code></pre>
+</li>
+<li>Set Compiz as MATE's window manager:<pre><code class="language-bash">gsettings set org.mate.session.required-components windowmanager 'compiz'
+</code></pre>
+</li>
+<li>Set Emerald theme:<pre><code class="language-bash">emerald --theme CommodoreOS
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2>Credits</h2>
+<p>All visual assets, themes, icons, and configurations are intellectual property of their original authors and designers from the <strong>Commodore OS Vision</strong> distribution (Debian/MX Linux spin). Packaged here solely for archive and theme portability.</p>
+
+    </div>
+
+    <nav class="links-nextprev">
+        <div class="links-nextprev-previous">
+            <a href="/guides/">&larr; Back to Guides</a>
+        </div>
+    </nav>
+</article>
+
+<script>
+    // High Contrast Toggle Functionality
+    (function() {
+        const STORAGE_KEY = 'high-contrast-mode';
+        const CONTRAST_CLASS = 'high-contrast-mode';
+        const button = document.getElementById('contrast-toggle');
+        
+        function loadContrastPreference() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved === 'enabled') {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                updateButtonState(true);
+            }
+        }
+        
+        function updateButtonState(isEnabled) {
+            if (isEnabled) {
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+            } else {
+                button.classList.remove('active');
+                button.setAttribute('aria-pressed', 'false');
+            }
+        }
+        
+        function toggleContrast() {
+            const isCurrentlyEnabled = document.documentElement.classList.contains(CONTRAST_CLASS);
+            if (isCurrentlyEnabled) {
+                document.documentElement.classList.remove(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'disabled');
+                updateButtonState(false);
+            } else {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'enabled');
+                updateButtonState(true);
+            }
+        }
+        
+        if (button) {
+            loadContrastPreference();
+            button.addEventListener('click', toggleContrast);
+            button.setAttribute('aria-pressed', document.documentElement.classList.contains(CONTRAST_CLASS));
+        }
+    })();
+</script>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+            <div class="social-icons">
+                <a href="https://www.github.com/rsomonte" aria-label="GitHub profile">
+                    <img src="https://avatars.githubusercontent.com/u/93784371?v=4" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/rsomonte/" aria-label="LinkedIn profile">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
+    </footer>
+</body>
+</html>

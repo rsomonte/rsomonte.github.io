@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xone Gen1 Dongle Fix</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="home-link">rsomonte&#39;s website</a>
+            <nav aria-labelledby="top-level-navigation-menu">
+                <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/posts/">Blog</a></li>
+                    <li class="nav-item"><a href="/guides/">Guides</a></li>
+                    <li class="nav-item"><a href="/cv/">Curriculum Vitae</a></li>
+                    <li class="nav-item"><a href="/tools/">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article class="guide-container">
+    <div class="post-title-container">
+        <h1>Xone Gen1 Dongle Fix</h1>
+        <button id="contrast-toggle" class="contrast-toggle-btn" aria-label="Toggle high contrast mode" title="Toggle high contrast text">
+            <span class="contrast-label">High Contrast</span>
+        </button>
+    </div>
+
+    <div class="guide-meta-bar">
+        
+        <p class="guide-repo">
+            <svg class="github-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+            Source Repository: <a href="https://github.com/rsomonte/xone-gen1-dongle-fix" target="_blank" rel="noopener noreferrer">rsomonte/xone-gen1-dongle-fix</a>
+        </p>
+        
+        
+    </div>
+
+    <div class="guide-content">
+        <p><strong>Xbox One Wireless Adapter (Gen 1) Not Working on Linux — Fix Guide</strong></p>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>Dongle recognized by <code>lsusb</code> (<code>045e:02e6</code>) but light never turns on on Linux, works fine on Windows same machine</li>
+<li><a href="https://github.com/medusalix/xone"><code>xone</code></a> (<code>xone-dongle</code>) driver is loaded but nothing happens</li>
+<li><code>dmesg</code> shows the device enumerating but no firmware upload, sometimes shows <code>Device is not authorized for usage</code></li>
+<li>No <code>1-X:1.0</code> interface ever appears in <code>/sys/bus/usb/devices/</code></li>
+</ul>
+<hr>
+<p><strong>Root Cause</strong></p>
+<p>A udev rule is explicitly blocking USB authorization of the dongle, preventing the kernel from setting its configuration and creating the interface that <code>xone-dongle</code> needs to bind to. No driver ever runs, no firmware gets uploaded, no light.</p>
+<p>Check for it:</p>
+<pre><code>grep -r '045e\|02e6\|authorized' /etc/udev/rules.d/ /lib/udev/rules.d/ 2&gt;/dev/null
+</code></pre>
+<p>If you see something like:</p>
+<pre><code>/etc/udev/rules.d/some-rule.rules:SUBSYSTEM==&quot;usb&quot;, ATTR{idVendor}==&quot;045e&quot;, ATTR{idProduct}==&quot;02e6&quot;, ATTR{authorized}=&quot;0&quot;
+</code></pre>
+<p>That file is your culprit. It sets <code>authorized=0</code> every time the dongle is plugged in. This rule is sometimes added intentionally (e.g. to prevent the dongle's 2.4GHz radio from interfering with other wireless devices) or left behind by a previous script or package.</p>
+<hr>
+<p><strong>Fix</strong></p>
+<p><strong>1.</strong> Remove the blocking rule:</p>
+<pre><code>sudo rm /etc/udev/rules.d/&lt;the-offending-file&gt;.rules
+</code></pre>
+<p><strong>2.</strong> Reload udev:</p>
+<pre><code>sudo udevadm control --reload-rules
+</code></pre>
+<p><strong>3.</strong> Unplug and replug the dongle — it should light up and be ready to pair.</p>
+<hr>
+<p><strong>How to diagnose this from scratch</strong></p>
+<p>Check the driver is loaded:</p>
+<pre><code>lsmod | grep xone
+</code></pre>
+<p>Should show <code>xone_dongle</code>, <code>xone_gip</code>, <code>xone_gip_gamepad</code>.</p>
+<p>Check the dongle is seen:</p>
+<pre><code>lsusb | grep 045e
+</code></pre>
+<p>Check dmesg for the authorization error:</p>
+<pre><code>sudo dmesg | grep -i '02e6\|xone\|authorized' | tail -20
+</code></pre>
+<p>Check for blocking udev rules:</p>
+<pre><code>grep -r 'authorized' /etc/udev/rules.d/ /lib/udev/rules.d/ 2&gt;/dev/null
+grep -r '02e6' /etc/udev/rules.d/ /lib/udev/rules.d/ 2&gt;/dev/null
+</code></pre>
+<p>Confirm by manually authorizing (temporary test — find your device path with <code>lsusb -t</code>):</p>
+<pre><code>echo 1 | sudo tee /sys/bus/usb/devices/&lt;device-path&gt;/authorized
+</code></pre>
+<p>If the dongle lights up after this, the blocking udev rule is confirmed.</p>
+<hr>
+<p><strong>xone driver setup (if you haven't done this yet)</strong></p>
+<blockquote>
+<p><strong>Note:</strong> This guide takes the <a href="https://github.com/medusalix/xone"><code>xone</code></a> driver plugin as granted. If you haven't installed it yet:</p>
+</blockquote>
+<p>Fedora:</p>
+<pre><code>sudo dnf install dkms kernel-devel cabextract
+git clone https://github.com/medusalix/xone
+cd xone
+sudo ./install.sh --release
+sudo xone-get-firmware.sh --skip-disclaimer
+</code></pre>
+<p>For Debian/Ubuntu replace <code>dnf install dkms kernel-devel</code> with <code>apt install dkms linux-headers-$(uname -r)</code>.</p>
+<p>Make sure <code>/lib/firmware/xow_dongle.bin</code> exists after the firmware script.</p>
+<hr>
+<p><strong>Confirmed on</strong></p>
+<blockquote>
+<p>Fedora 43 — Kernel 6.19.12 — Intel Tiger Lake-H xHCI — Xbox One Wireless Adapter Gen 1 (<code>045e:02e6</code>) — <a href="https://github.com/medusalix/xone"><code>xone</code></a> driver</p>
+</blockquote>
+
+    </div>
+
+    <nav class="links-nextprev">
+        <div class="links-nextprev-previous">
+            <a href="/guides/">&larr; Back to Guides</a>
+        </div>
+    </nav>
+</article>
+
+<script>
+    // High Contrast Toggle Functionality
+    (function() {
+        const STORAGE_KEY = 'high-contrast-mode';
+        const CONTRAST_CLASS = 'high-contrast-mode';
+        const button = document.getElementById('contrast-toggle');
+        
+        function loadContrastPreference() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved === 'enabled') {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                updateButtonState(true);
+            }
+        }
+        
+        function updateButtonState(isEnabled) {
+            if (isEnabled) {
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+            } else {
+                button.classList.remove('active');
+                button.setAttribute('aria-pressed', 'false');
+            }
+        }
+        
+        function toggleContrast() {
+            const isCurrentlyEnabled = document.documentElement.classList.contains(CONTRAST_CLASS);
+            if (isCurrentlyEnabled) {
+                document.documentElement.classList.remove(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'disabled');
+                updateButtonState(false);
+            } else {
+                document.documentElement.classList.add(CONTRAST_CLASS);
+                localStorage.setItem(STORAGE_KEY, 'enabled');
+                updateButtonState(true);
+            }
+        }
+        
+        if (button) {
+            loadContrastPreference();
+            button.addEventListener('click', toggleContrast);
+            button.setAttribute('aria-pressed', document.documentElement.classList.contains(CONTRAST_CLASS));
+        }
+    })();
+</script>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p class="copyright">&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> rsomonte</p>
+            <div class="social-icons">
+                <a href="https://www.github.com/rsomonte" aria-label="GitHub profile">
+                    <img src="https://avatars.githubusercontent.com/u/93784371?v=4" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/rsomonte/" aria-label="LinkedIn profile">
+                    <img src="https://bit.ly/4eIqFwg" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+        <p class="built-with"><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
+    </footer>
+</body>
+</html>
